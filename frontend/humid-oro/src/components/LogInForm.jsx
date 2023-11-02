@@ -1,10 +1,13 @@
 import { useState } from "react"
 import { redirect, useNavigate } from "react-router-dom"
-import SignUp from "../routes/signup";
+// import SignUp from "../routes/signup";
+import Cookies from "js-cookie";
+import { useAuth } from "../AuthContext";
+
 export const LogInForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
+    const {setIsAuth} = useAuth();
     const navigate = useNavigate();
 
     const handleChangeUsername = (e) => {
@@ -19,20 +22,20 @@ export const LogInForm = () => {
             username,
             password
         }
-        
-        const url = 'http://localhost:8001/token/';
+        console.log(JSON.stringify(user))
+        console.log(Cookies.get('csrftoken'))
+        const url = 'http://127.0.0.1:8001/dj-rest-auth/login/';
         const data = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                // 'X-CSRFToken': Cookies.get('csrftoken'),
             },
             body: JSON.stringify(user)
         }).then((response) => response.json());
         console.log(data);
-        localStorage.clear();
-        localStorage.setItem('access_token', data.access);
-        localStorage.setItem('refresh_token', data.refresh);
-        localStorage.setItem('name', data.name)
+        Cookies.set('Authorization', `Token ${data.key}`);
+        setIsAuth(true);
         navigate('/user');
     }
     const handleClick = (e) => {
