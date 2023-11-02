@@ -1,25 +1,22 @@
 import { useNavigate } from "react-router-dom";
-
+import Cookies from "js-cookie";
+import { useAuth } from "../AuthContext";
 export const LogOut = () => {
+    const {setIsAuth} = useAuth();
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const token = {
-            refresh_token: localStorage.getItem('refresh_token')
-        }
-        console.log(token);
-        console.log(localStorage.getItem('access_token'));
-        const Url = 'http://localhost:8000/logout/';
-        const data = await fetch(Url, {
+        const url = 'http://127.0.0.1:8001/dj-rest-auth/logout/';
+        const data = await fetch(url, {
             method: 'POST',
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 'Content-Type': 'application/json',
+                "Authorization": `${Cookies.get('Authorization')}`
             },
-            body: JSON.stringify(token),
-        })
+        }).then((response) => response.json());
+        setIsAuth(false);
+        Cookies.remove("Authorization");
         console.log(data);
-        localStorage.clear();
         navigate('/login');
     }
     return (
