@@ -17,18 +17,15 @@ environ.Env.read_env()
 CORS_ALLOW_ALL_ORIGINS = True
 
 REST_FRAMEWORK = {
-     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-      ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
 }
-from datetime import timedelta
-SIMPLE_JWT = {
-     'ACCESS_TOKEN_LIFETIME': timedelta(days=15),
-     'REFRESH_TOKEN_LIFETIME': timedelta(days=90),
-     'ROTATE_REFRESH_TOKENS': True,
-     'BLACKLIST_AFTER_ROTATION': True,
-}
-
+EMAIL_BACKEND ='django.core.mail.backends.console.EmailBackend'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,7 +39,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 
 # Application definition
@@ -54,16 +51,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #third party
     'corsheaders',
-    'humidoro_project.humidoro_app',
-    'rest_framework_simplejwt.token_blacklist',
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
+    #local
+    'project.api',
+    'project.accounts',
+    'project.cigar',
 ]
-
+SITE_ID = 1
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -97,12 +105,18 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': env("DB_NAME"),
+        # 'USER': env("DB_USER"),
+        # 'PASSWORD': env("DB_PASSWORD"),
+        # 'HOST': env("DB_HOST"),
+        # 'PORT': env("DB_PORT"),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
+        'NAME': 'humid_oro',
+        'USER': 'austinberry',
+        'PASSWORD': 'vewEQRLd9gTDvJ6p9xw1HkTb34iXCbA3',
+        'HOST': 'dpg-cl0j56bjdq6s73dumo10-a.ohio-postgres.render.com',
+        'PORT': 5432,
     }
 }
 
@@ -147,3 +161,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_AUTH = {
+    'USER_DETAILS_SERIALIZER': 'project.accounts.serializers.UserDetailsSerializer',
+}
