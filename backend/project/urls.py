@@ -17,11 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from project.cigar import views
+from project.cigar import views as cigarViews
+from project.accounts import views as accountViews
+# from project.accounts.views import UserViewSet
 # from django.conf import settings
 
 router = routers.DefaultRouter()
-router.register(r'cigar', views.CigarViewSet)
+router.register(r'cigar', cigarViews.CigarViewSet)
+router.register(r'brand', cigarViews.BrandViewset)
+router.register(r'profiles', accountViews.ProfileViewSet)
+router.register(r'accounts', accountViews.UserViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
