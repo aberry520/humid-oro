@@ -15,4 +15,4 @@ class UserDetailsSerializer(UserDetailsSerializer):
     profile = ProfileSerializer()
     class Meta(UserDetailsSerializer.Meta):
         model = User
-        fields = ('id', 'username', 'email', 'is_staff','groups', 'profile')
+        fields = ('id', 'username','first_name','last_name', 'email', 'is_staff','groups', 'profile')
