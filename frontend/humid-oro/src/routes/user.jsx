@@ -1,6 +1,14 @@
 import { redirect, useLoaderData } from "react-router-dom"
 import Cookies from 'js-cookie'
 import { useAuth } from "../AuthContext";
+import { LogOut } from "../components/LogOut";
+import styled from "styled-components";
+
+const Profile = styled.div`
+    /* border: black solid; */
+    margin: auto;
+    width: fit-content;
+`;
 
 export async function loader() {
     // const {isAuth} = useAuth();
@@ -34,8 +42,12 @@ export default function User (){
     };
     return (
         <>
+        <Profile>
             <h1>My Profile</h1>
+            <LogOut/>
             <p>Welcome {displayName()}!</p>
+            <img src={user.profile.avatar}/>
+        </Profile>
         </>
     )
 }

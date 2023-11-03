@@ -1,9 +1,18 @@
 import { LogInForm } from "../components/LogInForm";
-export default function LogIn() {
+import styled from "styled-components";
 
-    return(
-        <>
-        <LogInForm/>
-        </>
-    )
+const LogInDiv = styled.div`
+  /* border: black solid; */
+  margin: auto;
+  width: fit-content;
+`;
+
+export default function LogIn() {
+  return (
+    <>
+      <LogInDiv>
+        <LogInForm />
+      </LogInDiv>
+    </>
+  );
 }
