@@ -1,6 +1,5 @@
 import { useState } from "react"
-import { redirect, useNavigate } from "react-router-dom"
-// import SignUp from "../routes/signup";
+import { useNavigate } from "react-router-dom"
 import Cookies from "js-cookie";
 import { useAuth } from "../AuthContext";
 
