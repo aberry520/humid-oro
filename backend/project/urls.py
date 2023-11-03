@@ -20,7 +20,8 @@ from rest_framework import routers
 from project.cigar import views as cigarViews
 from project.accounts import views as accountViews
 # from project.accounts.views import UserViewSet
-# from django.conf import settings
+from django.conf import settings
+from django.conf.urls.static import static 
 
 router = routers.DefaultRouter()
 router.register(r'cigar', cigarViews.CigarViewSet)
@@ -33,4 +34,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls'))
-]
+]   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
