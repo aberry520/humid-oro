@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import { Filters } from "../components/Filters";
 import { Cigars } from "../components/Cigars";
 import styled from "styled-components";
-import * as CigarJSON from "../../cigars.json";
+import * as CigarJSON from "../../jsonData/cigars.json";
 
 const HomeDiv = styled.div`
   border: black solid;
