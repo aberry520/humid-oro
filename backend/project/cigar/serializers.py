@@ -8,4 +8,4 @@ class CigarSerializer(serializers.ModelSerializer):
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
-        fields = ['name']
+        fields = "__all__"
