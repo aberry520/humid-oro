@@ -2,7 +2,9 @@ import { useLoaderData } from "react-router-dom";
 import { Filters } from "../components/Filters";
 import { Cigars } from "../components/Cigars";
 import styled from "styled-components";
-import * as CigarJSON from "../../jsonData/cigars.json";
+import Cookies from "js-cookie";
+import { NavBar } from "../components/Nav/NavBar";
+
 
 const HomeDiv = styled.div`
   border: black solid;
@@ -13,37 +15,26 @@ const HomeDiv = styled.div`
 `;
 
 export async function loader() {
-  // const url = 'https://cigars.p.rapidapi.com/cigars?page=1';
-  // const options = {
-  //     method: 'GET',
-  //     headers: {
-  //         'X-RapidAPI-Key': 'c404c0dfb7mshb5e1e6476869267p1d83fcjsne66a642aa104',
-  //         'X-RapidAPI-Host': 'cigars.p.rapidapi.com'
-  //     }
-  // };
-
-  // try {
-  //     const response = await fetch(url, options);
-  //     const result = await response.text();
-  //     console.log(result);
-  //     return {Home}
-  // } catch (error) {
-  //     console.error(error);
-  // }
-  // console.log(CigarJSON.cigars)
-  {
-    Home;
+  
+  const url = 'http://127.0.0.1:8001/cigar/?page=1';
+  try {
+      const response = await fetch(url);
+      const result = await response.json();
+      {Home}
+      return result
+  } catch (error) {
+      console.error(error);
   }
-  return CigarJSON.cigars;
 }
 export default function Home() {
-  const cigars = useLoaderData();
-  // console.log(cigars[0])
+  const cigarsHome = useLoaderData();
+  // console.log(cigars)
   return (
     <>
+      {/* <NavBar/> */}
       <HomeDiv>
         <Filters />
-        <Cigars cigars={cigars} />
+        <Cigars cigarsHome={cigarsHome}/>
       </HomeDiv>
     </>
   );
