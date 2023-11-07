@@ -20,18 +20,31 @@ const CigarCards = styled.div`
   gap: 25px;
 `;
 
-export const Cigars = ({cigars}) => {
-    console.log(cigars[0])
+export const Cigars = ({cigarsHome, cigarsSearch}) => {
+    // console.log(cigars[0])
+    // console.log(cigarsSearch)
+    function results(){
+      if (cigarsSearch){
+        if (cigarsSearch.count <= 0){
+          return <h1>No Results</h1>
+        } else {
+          return cigarsSearch.results.map((item, index) =><CigarCard key={item.id} cigars={item}/>)
+        }
+
+      }
+
+    }
   return (
     <>
       <Cigar>
         <h1>Cigars</h1>
         <CigarCards>
             {
-            cigars.map((item, index) =>
-            <CigarCard key={item.cigarId} cigars={item}/>
+            cigarsHome?.results.map((item, index) =>
+            <CigarCard key={item.id} cigars={item}/>
             )
             }
+            {results()}
         </CigarCards>
       </Cigar>
     </>
