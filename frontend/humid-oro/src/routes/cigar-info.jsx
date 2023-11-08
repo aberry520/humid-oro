@@ -14,16 +14,7 @@ const HomeDiv = styled.div`
   grid-template-columns: 1fr 3fr;
   max-width: 90vw;
 `;
-function Cigar({ cigarInfo }) {
-  return (
-    <>
-      <HomeDiv>
-        <h1>{cigarInfo.name}</h1>
-        <img src={cigarInfo.image} />
-      </HomeDiv>
-    </>
-  );
-}
+
 export default function CigarInfo() {
   const params = useParams();
   const [cigarInfo, setCigarInfo] = useState();
@@ -44,7 +35,10 @@ export default function CigarInfo() {
   }, [params.id]);
   return (
     <>
-      <Cigar cigarInfo={cigarInfo} />
+      <HomeDiv>
+        <h1>{cigarInfo.name}</h1>
+        <img src={cigarInfo.image} />
+      </HomeDiv>
     </>
   );
 }
