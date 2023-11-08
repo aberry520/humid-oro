@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 // import { Search } from "react-router-dom";
 import styled from "styled-components";
+import { Search } from "./Search";
 
 const Nav = styled.div`
   display: flex;
@@ -12,27 +13,12 @@ const Nav = styled.div`
 `;
 const NavBorder = styled.div`
   border: black solid;
+  background-color: #364F59;
   margin: 0;
 `;
 
 export const NavBar = () => {
-  const [search, setSearch] = useState("");
-  const [lastSearch, setLastSearch] = useState("");
-  const navigate = useNavigate();
-
-  const handleChangeSearch = (e) => {
-    setSearch(e.target.value);
-    setLastSearch(e.target.value)
-  };
-
-  const handleSearchClick = (e) => {
-    if (search === ""){
-        navigate(`/search/${lastSearch}`);
-    }else{
-        navigate(`/search/${search}`);
-        setSearch("")
-    }
-  };
+ 
   return (
     <>
       <NavBorder>
@@ -40,15 +26,7 @@ export const NavBar = () => {
           <Link to={"/"}>
             <p>Home</p>
           </Link>
-          <form>
-            <input
-              type="search"
-              placeholder="Search"
-              onChange={handleChangeSearch}
-              value={search}
-            />
-            <button type="button" name="searchButton" onClick={(e)=>{handleSearchClick(e)}}>Search</button>
-          </form>
+          <Search />
           <Link to={"user/"}>
             <p>Profile</p>
           </Link>
