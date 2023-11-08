@@ -27,7 +27,7 @@ export const Cigars = ({ cigarsHome, cigarsSearch }) => {
     <>
       <Cigar>
         <h1>Cigars</h1>
-        <Pagination itemsPerPage={4} items={items} />,
+        <Pagination itemsPerPage={10} items={items} />,
       </Cigar>
     </>
   );
