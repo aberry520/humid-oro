@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 const Filter = styled.div`
-    border: black solid;
+    /* border: black solid; */
+    background-color: #364F59;
+
+    /* margin-left: 20px; */
     margin: 5px;
     /* display: flex; */
     /* justify-content: center; */
@@ -11,10 +14,17 @@ const Filter = styled.div`
     min-width: fit-content;
     min-height: 80vh;
     max-height: 85vh;
+    h3{
+        margin-left: 20px;
+    }
+    select{
+        margin-left: 20px;
+    }
     h1{
         margin: 1rem;
         text-align: center;
     }
+    
 `
 export const Filters = () => {
 
