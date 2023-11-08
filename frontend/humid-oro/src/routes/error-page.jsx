@@ -1,7 +1,7 @@
-export default function ErrorPage (){
-    return (
-        <>
-        <p>An error occured!</p>
-        </>
-    )
+export default function ErrorPage() {
+  return (
+    <>
+      <h1>An error occured!</h1>
+    </>
+  );
 }
