@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import ReactPaginate from "react-paginate";
 import { CigarCard } from "./CigarCard";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import CigarInfo from "../routes/cigar-info";
 
 const CigarCards = styled.div`
   display: flex;
@@ -38,7 +40,9 @@ export function Pagination({ itemsPerPage, items }) {
     <>
       <CigarCards>
         {currentItems.map((item) => (
-          <CigarCard key={item.id} cigars={item} />
+          <Link key={item.id} to={"/info/" + item.id}>
+            <CigarCard key={item.id} cigars={item} />
+          </Link>
         ))}
         {/* {results()} */}
       </CigarCards>
