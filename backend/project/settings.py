@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'project.api',
     'project.accounts',
     'project.cigar',
+    'project.reviews',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
