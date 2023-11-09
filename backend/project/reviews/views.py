@@ -7,6 +7,6 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 # Create your views here.
 class ReviewViewset(viewsets.ModelViewSet):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
