@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import { NavBar } from "../components/Nav/NavBar";
 import { Pagination } from "../components/Pagination";
 import { useEffect, useState } from "react";
+import { ReviewForm } from "../components/ReviewForm";
 
 const InfoDiv = styled.div`
   /* border: black solid; */
@@ -59,7 +60,7 @@ export default function CigarInfo() {
               <br />
               Wrapper Color: {cigarInfo.color}
             </h3>
-            <button>Review</button>
+            <ReviewForm cigarInfo={cigarInfo} />
           </>
         ) : null}
       </InfoDiv>
