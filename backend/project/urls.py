@@ -19,7 +19,7 @@ from django.urls import path, include
 from rest_framework import routers
 from project.cigar import views as cigarViews
 from project.accounts import views as accountViews
-# from project.accounts.views import UserViewSet
+from project.reviews import views as reviewViews
 from django.conf import settings
 from django.conf.urls.static import static 
 
@@ -28,6 +28,7 @@ router.register(r'cigar', cigarViews.CigarViewSet)
 router.register(r'brand', cigarViews.BrandViewset)
 router.register(r'profiles', accountViews.ProfileViewSet)
 router.register(r'accounts', accountViews.UserViewSet)
+router.register(r'reviews', reviewViews.ReviewViewset)
 
 urlpatterns = [
     path('', include(router.urls)),
