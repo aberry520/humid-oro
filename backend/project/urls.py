@@ -29,6 +29,7 @@ router.register(r'brand', cigarViews.BrandViewset)
 router.register(r'profiles', accountViews.ProfileViewSet)
 router.register(r'accounts', accountViews.UserViewSet)
 router.register(r'reviews', reviewViews.ReviewViewset)
+router.register(r'reviewslist', accountViews.UserReviewList, basename='reviews')
 
 urlpatterns = [
     path('', include(router.urls)),
