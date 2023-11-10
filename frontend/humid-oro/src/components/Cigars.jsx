@@ -3,7 +3,7 @@ import { Pagination } from "./Pagination";
 
 const Cigar = styled.div`
   border: solid #bf976d;
-  background-color: #364f59;
+  /* background-color: #151414; */
   margin: 5px;
   min-width: fit-content;
   min-height: fit-content;
@@ -11,7 +11,7 @@ const Cigar = styled.div`
     margin: 25px auto;
     text-align: center;
   }
-  box-shadow: 12px 29px 81px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 29px 40px 0px rgba(0, 0, 0, 0.25);
 `;
 
 export const Cigars = ({ cigarsHome, cigarsSearch }) => {
@@ -27,7 +27,11 @@ export const Cigars = ({ cigarsHome, cigarsSearch }) => {
     <>
       <Cigar>
         <h1>Cigars</h1>
-        <Pagination itemsPerPage={10} items={items} />,
+        {items.length <= 0 ? (
+          <h1>No Results</h1>
+        ) : (
+          <Pagination itemsPerPage={10} items={items} />
+        )}
       </Cigar>
     </>
   );
