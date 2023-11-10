@@ -1,15 +1,17 @@
-import { redirect, useLoaderData } from "react-router-dom";
+import { redirect, useLoaderData, Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useAuth } from "../AuthContext";
 import { LogOut } from "../components/LogOut";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { UserReviewItem } from "../components/UserReviewItem";
 
 const Profile = styled.div`
-  border: black solid;
-  background-color: #364f59;
+  /* border: black solid; */
+  /* background-color: #364f59; */
 
   margin: auto;
-  width: fit-content;
+  /* width: fit-content; */
 `;
 
 export async function loader() {
@@ -37,6 +39,22 @@ export async function loader() {
 }
 export default function User() {
   const user = useLoaderData();
+  const [userList, setUserList] = useState();
+  useEffect(() => {
+    getList();
+  }, []);
+  async function getList() {
+    const urlList = `http://127.0.0.1:8001/reviewslist/`;
+    const userList = await fetch(urlList, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: Cookies.get("Authorization"),
+      },
+    }).then((response) => response.json());
+    console.log(userList);
+    setUserList(userList);
+  }
+
   function displayName() {
     if (user.first_name) {
       return user.first_name;
@@ -51,6 +69,13 @@ export default function User() {
         <LogOut />
         <p>Welcome {displayName()}!</p>
         <img src={user.profile.avatar} />
+        {userList?.results.map((review) => {
+          return (
+            <Link to={"/info/" + review.cigar.id}>
+              <UserReviewItem key={review.cigar.id} review={review} />
+            </Link>
+          );
+        })}
       </Profile>
     </>
   );
