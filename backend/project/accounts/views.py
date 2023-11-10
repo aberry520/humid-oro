@@ -1,8 +1,11 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from .models import Profile
 from .serializers import ProfileSerializer, UserDetailsSerializer
 from django.contrib.auth.models import User
 from dj_rest_auth.views import UserDetailsView
+from project.reviews import serializers as reviewSerializers
+from project.reviews.models import Review
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class ProfileViewSet(viewsets.ModelViewSet):
@@ -14,3 +17,11 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserDetailsSerializer
     
+
+class UserReviewList(viewsets.ModelViewSet):
+    serializer_class = reviewSerializers.ReviewSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Review.objects.filter(user=user)
