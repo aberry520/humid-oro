@@ -6,30 +6,33 @@ import { Search } from "./Search";
 
 const Nav = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 10px;
   max-width: 1000px;
   justify-content: space-around;
+  align-items: center;
   margin: auto;
 `;
 const NavBorder = styled.div`
-  border: black solid;
-  background-color: #364F59;
+  /* border: black solid; */
+  /* background-color: #1a1a1a; */
   margin: 0;
 `;
 
 export const NavBar = () => {
- 
   return (
     <>
       <NavBorder>
         <Nav>
           <Link to={"/"}>
-            <p>Home</p>
+            <img src="../public/humid-oro.svg" />
           </Link>
-          <Search />
-          <Link to={"user/"}>
-            <p>Profile</p>
-          </Link>
+          <div>
+            <Search />
+            <Link to={"user/"}>
+              <p>Profile</p>
+            </Link>
+          </div>
         </Nav>
       </NavBorder>
     </>
