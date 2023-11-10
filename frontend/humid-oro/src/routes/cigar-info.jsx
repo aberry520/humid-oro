@@ -60,7 +60,9 @@ export default function CigarInfo() {
               <br />
               Wrapper Color: {cigarInfo.color}
             </h3>
-            <ReviewForm cigarInfo={cigarInfo} />
+            {Cookies.get("Authorization") ? (
+              <ReviewForm cigarInfo={cigarInfo} />
+            ) : null}
           </>
         ) : null}
       </InfoDiv>
