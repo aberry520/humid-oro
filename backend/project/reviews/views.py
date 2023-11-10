@@ -10,3 +10,5 @@ class ReviewViewset(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
+    filter_backends = (SearchFilter, OrderingFilter)
+    search_fields = ['review']
