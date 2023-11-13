@@ -4,7 +4,8 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const SearchDiv = styled.div`
-    display: flex;
+  display: flex;
+  max-height: 2.5em;
 `;
 
 export const Search = () => {
