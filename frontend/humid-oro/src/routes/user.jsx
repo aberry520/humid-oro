@@ -9,9 +9,21 @@ import { UserReviewItem } from "../components/UserReviewItem";
 const Profile = styled.div`
   /* border: black solid; */
   /* background-color: #364f59; */
+  /* display: flex; */
+  margin: auto;
+  width: fit-content;
+  img {
+    height: auto;
+    width: 10rem;
+  }
+`;
+const UserList = styled.div`
+  /* border: black solid; */
+  /* background-color: #364f59; */
 
   margin: auto;
-  /* width: fit-content; */
+  min-width: fit-content;
+  max-width: 50ch;
 `;
 
 export async function loader() {
@@ -68,15 +80,17 @@ export default function User() {
         <h1>My Profile</h1>
         <LogOut />
         <p>Welcome {displayName()}!</p>
-        <img src={user.profile.avatar} />
+        {/* <img src={user.profile.avatar} /> */}
+      </Profile>
+      <UserList>
         {userList?.results.map((review) => {
           return (
-            <Link to={"/info/" + review.cigar.id}>
+            <Link key={review.cigar.id} to={"/info/" + review.cigar.id}>
               <UserReviewItem key={review.cigar.id} review={review} />
             </Link>
           );
         })}
-      </Profile>
+      </UserList>
     </>
   );
 }
