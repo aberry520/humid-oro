@@ -46,6 +46,8 @@ export default function CigarInfo() {
             <h1>{cigarInfo.name}</h1>
             <img src={cigarInfo.image} />
             <h3>
+              Brand: {cigarInfo.brand.name}
+              <br />
               Country: {cigarInfo.origin}
               <br />
               Filler: {cigarInfo.filler}
