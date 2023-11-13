@@ -14,23 +14,33 @@ const Cigar = styled.div`
   box-shadow: 1px 29px 40px 0px rgba(0, 0, 0, 0.25);
 `;
 
-export const Cigars = ({ cigarsHome, cigarsSearch }) => {
-  let items = [];
-  if (cigarsSearch === undefined && cigarsHome !== undefined) {
-    items = cigarsHome.results;
+export const Cigars = ({ cigarsHome, cigarsSearch, cigarFilter }) => {
+  let items;
+  if (cigarsSearch === undefined && cigarsHome) {
+    if (cigarsHome.results) {
+      items = cigarsHome.results;
+    } else {
+      items = cigarsHome;
+    }
   }
   if (cigarsHome === undefined && cigarsSearch !== undefined) {
-    items = cigarsSearch.results;
+    if (cigarsSearch.results) {
+      items = cigarsSearch.results;
+    } else {
+      items = cigarsSearch;
+    }
   }
-
+  if (cigarFilter) {
+    items = cigarFilter;
+  }
   return (
     <>
       <Cigar>
         <h1>Cigars</h1>
-        {items.length <= 0 ? (
+        {items?.length <= 0 ? (
           <h1>No Results</h1>
         ) : (
-          <Pagination itemsPerPage={10} items={items} />
+          <Pagination itemsPerPage={15} items={items} />
         )}
       </Cigar>
     </>
