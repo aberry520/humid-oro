@@ -16,6 +16,8 @@ const CigarCards = styled.div`
 export function Pagination({ itemsPerPage, items }) {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
+
+  // console.log(items);
   const [itemOffset, setItemOffset] = useState(0);
 
   // Simulate fetching items from another resources.
@@ -23,9 +25,8 @@ export function Pagination({ itemsPerPage, items }) {
   // from an API endpoint with useEffect and useState)
   const endOffset = itemOffset + itemsPerPage;
   //   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  const currentItems = items.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(items.length / itemsPerPage);
-  //   console.log(currentItems)
+  const currentItems = items?.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(items?.length / itemsPerPage || 1);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
@@ -39,7 +40,7 @@ export function Pagination({ itemsPerPage, items }) {
   return (
     <>
       <CigarCards>
-        {currentItems.map((item) => (
+        {currentItems?.map((item) => (
           <Link key={item.id} to={"/info/" + item.id}>
             <CigarCard key={item.id} cigars={item} />
           </Link>
