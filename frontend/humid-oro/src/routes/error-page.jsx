@@ -4,7 +4,23 @@ export default function ErrorPage() {
   return (
     <>
       <NavBar />
-      <h1>An error occured!</h1>
+      <h1>Oh no! An error occured!</h1>
+      <h2>
+        Please tell us what went wrong so that we can make your humid-oro
+        experience better!
+      </h2>
+      <form>
+        <textarea
+          name="error"
+          placeholder="Report Issue Here"
+          rows="10"
+          cols="50"
+          required
+          // onChange={handleChangeReview}
+        />
+        <br />
+        <button type="button">Submit</button>
+      </form>
     </>
   );
 }
