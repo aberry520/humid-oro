@@ -4,6 +4,9 @@ const Cigar = styled.div`
   border: solid black;
   display: grid;
   grid-template-columns: 1fr, 1fr, 1fr;
+  min-width: fit-content;
+  max-width: 50ch;
+  margin: auto;
 `;
 export const UserReviewItem = ({ review }) => {
   return (
