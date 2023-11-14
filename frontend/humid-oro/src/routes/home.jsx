@@ -9,6 +9,10 @@ const HomeDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr;
   max-width: 90vw;
+  .gif {
+    width: 500px;
+    height: auto;
+  }
 `;
 
 export async function loader() {
@@ -21,6 +25,7 @@ export default function Home() {
   const [origin, setOrigin] = useState();
   const [strength, setStrength] = useState();
   const [brand, setBrand] = useState();
+  const [loading, setLoading] = useState(true);
   async function getCigars() {
     const url = `http://127.0.0.1:8001/cigar/`;
     try {
@@ -31,6 +36,7 @@ export default function Home() {
       }
       console.log(result);
       setCigarsHome(result);
+      setLoading(false);
       return result;
     } catch (error) {
       console.error(error);
@@ -182,7 +188,15 @@ export default function Home() {
           brandChange={brandChange}
           cigarsHome={cigarsHome}
         />
-        <Cigars cigarsHome={cigarsHome} cigarFilter={cigarFilter} />
+        {/* {loading == true ? (
+          <img src="../../public/ezgif.com-crop.gif" className="gif" />
+        ) : ( */}
+        <Cigars
+          cigarsHome={cigarsHome}
+          cigarFilter={cigarFilter}
+          loading={loading}
+        />
+        {/* )} */}
       </HomeDiv>
     </>
   );
