@@ -3,6 +3,7 @@ import { Filters } from "../components/Filters";
 import { Cigars } from "../components/Cigars";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import { Sort } from "../components/Sort";
 
 const HomeDiv = styled.div`
   margin: 10px auto;
@@ -185,15 +186,62 @@ export default function Home() {
     setBrand(type);
   }
   // console.log(cigarFilter);
-
+  const [sort, setSort] = useState();
+  async function getCigarsSort() {
+    try {
+      const url = `http://127.0.0.1:8001/cigar/?ordering=${sort}`;
+      const response = await fetch(url);
+      if (response.ok) {
+        const result = await response.json();
+        {
+          Home;
+        }
+        console.log(result);
+        setCigarsHome(result);
+        setLoading(false);
+        return result;
+      } else {
+        setError(
+          "There seems to be an error connecting to our servers, please try again."
+        );
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+  useEffect(() => {
+    getCigarsSort();
+  }, [sort]);
+  function ascendingOrigin(e) {
+    setSort(e.target.value);
+  }
+  function descendingOrigin(e) {
+    setSort(e.target.value);
+  }
+  function ascendingBrand(e) {
+    setSort(e.target.value);
+  }
+  function descendingBrand(e) {
+    setSort(e.target.value);
+  }
+  function ascendingStrength(e) {
+    setSort(e.target.value);
+  }
+  function descendingStrength(e) {
+    setSort(e.target.value);
+  }
   return (
     <>
       <HomeDiv>
-        <Filters
+        {/* <Filters
           strengthChange={strengthChange}
           originChange={originChange}
           brandChange={brandChange}
           cigarsHome={cigarsHome}
+        /> */}
+        <Sort
+          ascendingOrigin={ascendingOrigin}
+          descendingOrigin={descendingOrigin}
         />
         <Cigars
           cigarsHome={cigarsHome}
