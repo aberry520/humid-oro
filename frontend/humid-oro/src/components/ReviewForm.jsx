@@ -23,7 +23,7 @@ export const ReviewForm = ({ cigarInfo }) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://127.0.0.1:8001/reviews/";
+    const url = "http://127.0.0.1:8001/reviewsadd/";
     const data = await fetch(url, {
       method: "POST",
       headers: {
@@ -55,7 +55,7 @@ export const ReviewForm = ({ cigarInfo }) => {
         <label htmlFor="Rating">
           Rating: 0
           <input
-            type="range"
+            type="decimal"
             name="rating"
             min={0}
             max={10}
