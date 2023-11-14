@@ -23,7 +23,7 @@ class AddCigarViewSet(viewsets.ModelViewSet):
     
 class BrandViewset(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
-    queryset = Brand.objects.all()
+    queryset = Brand.objects.all().order_by("name")
     serializer_class = BrandSerializer
     filter_backends = (SearchFilter, OrderingFilter)
     search_fields = ['name']
