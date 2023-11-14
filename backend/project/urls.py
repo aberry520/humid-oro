@@ -25,6 +25,7 @@ from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 router.register(r'cigar', cigarViews.CigarViewSet)
+router.register(r'addcigar', cigarViews.AddCigarViewSet)
 router.register(r'brand', cigarViews.BrandViewset)
 router.register(r'profiles', accountViews.ProfileViewSet)
 router.register(r'accounts', accountViews.UserViewSet)
