@@ -56,7 +56,7 @@ export default function User() {
     getList();
   }, []);
   async function getList() {
-    const urlList = `http://127.0.0.1:8001/reviewslist/`;
+    const urlList = `http://127.0.0.1:8001/reviewsuserlist/?ordering=-rating`;
     const userList = await fetch(urlList, {
       headers: {
         "Content-Type": "application/json",
@@ -85,9 +85,9 @@ export default function User() {
       <UserList>
         {userList?.results.map((review) => {
           return (
-            <Link key={review.cigar.id} to={"/info/" + review.cigar.id}>
-              <UserReviewItem key={review.cigar.id} review={review} />
-            </Link>
+            // <Link key={review.cigar.id} to={"/info/" + review.cigar.id}>
+            <UserReviewItem key={review.cigar.id} review={review} />
+            // </Link>
           );
         })}
       </UserList>
