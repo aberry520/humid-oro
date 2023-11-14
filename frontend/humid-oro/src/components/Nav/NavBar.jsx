@@ -25,12 +25,15 @@ export const NavBar = () => {
       <NavBorder>
         <Nav>
           <Link to={"/"}>
-            <img src="../public/humid-oro.svg" />
+            <img src="../public/humidoro.svg" />
           </Link>
           <div>
             <Search />
             <Link to={"user/"}>
               <p>Profile</p>
+            </Link>
+            <Link to={"add/"}>
+              <p>Add Cigar</p>
             </Link>
           </div>
         </Nav>
