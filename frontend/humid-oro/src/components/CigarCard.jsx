@@ -5,7 +5,7 @@ const Card = styled.div`
   margin: 0;
   min-height: 300px;
   max-height: fit-content;
-  max-width: 25ch;
+  max-width: 200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -15,8 +15,9 @@ const Card = styled.div`
   /* box-shadow: 1px 29px 81px 0px rgba(0, 0, 0, 0.75); */
   img {
     margin-top: 15px;
-    width: 80%;
-    height: auto;
+    width: 200px;
+    height: 300px;
+    object-fit: contain;
   }
   h2 {
     font-size: medium;
