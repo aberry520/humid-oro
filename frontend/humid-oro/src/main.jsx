@@ -11,6 +11,7 @@ import ErrorPage from "./routes/error-page";
 import Search from "./routes/search";
 import User, { loader as userLoader } from "./routes/user";
 import CigarInfo from "./routes/cigar-info";
+import UserAdd from "./routes/user-add.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
       {
         path: "info/:id",
         element: <CigarInfo />,
+        // loader: searchLoader,
+      },
+      {
+        path: "add/",
+        element: <UserAdd />,
         // loader: searchLoader,
       },
     ],
