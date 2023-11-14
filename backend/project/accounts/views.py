@@ -6,6 +6,7 @@ from dj_rest_auth.views import UserDetailsView
 from project.reviews import serializers as reviewSerializers
 from project.reviews.models import Review
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.filters import SearchFilter, OrderingFilter
 
 # Create your views here.
 class ProfileViewSet(viewsets.ModelViewSet):
@@ -29,7 +30,7 @@ class UserReviewList(viewsets.ModelViewSet):
 class UserReviewList2(viewsets.ModelViewSet):
     serializer_class = reviewSerializers.ReviewSerializerList
     permission_classes = [IsAuthenticated]
-
+    filter_backends = (SearchFilter, OrderingFilter)
     def get_queryset(self):
         user = self.request.user
-        return Review.objects.filter(user=user)
+        return Review.objects.filter(user=user).order_by("rating")
