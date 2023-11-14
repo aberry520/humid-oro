@@ -14,7 +14,7 @@ const Cigar = styled.div`
   box-shadow: 1px 29px 40px 0px rgba(0, 0, 0, 0.25);
 `;
 
-export const Cigars = ({ cigarsHome, cigarsSearch, cigarFilter }) => {
+export const Cigars = ({ cigarsHome, cigarsSearch, cigarFilter, loading }) => {
   let items;
   if (cigarsSearch === undefined && cigarsHome) {
     if (cigarsHome.results) {
@@ -36,11 +36,17 @@ export const Cigars = ({ cigarsHome, cigarsSearch, cigarFilter }) => {
   return (
     <>
       <Cigar>
-        <h1>Cigars</h1>
-        {items?.length <= 0 ? (
-          <h1>No Results</h1>
+        {loading == true ? (
+          <img src="../../public/ezgif.com-crop.gif" className="gif" />
         ) : (
-          <Pagination itemsPerPage={15} items={items} />
+          <div>
+            <h1>Cigars</h1>
+            {items?.length <= 0 ? (
+              <h1>No Results</h1>
+            ) : (
+              <Pagination itemsPerPage={15} items={items} />
+            )}
+          </div>
         )}
       </Cigar>
     </>
