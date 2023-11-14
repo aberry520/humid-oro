@@ -14,7 +14,13 @@ const Cigar = styled.div`
   box-shadow: 1px 29px 40px 0px rgba(0, 0, 0, 0.25);
 `;
 
-export const Cigars = ({ cigarsHome, cigarsSearch, cigarFilter, loading }) => {
+export const Cigars = ({
+  cigarsHome,
+  cigarsSearch,
+  cigarFilter,
+  loading,
+  error,
+}) => {
   let items;
   if (cigarsSearch === undefined && cigarsHome) {
     if (cigarsHome.results) {
@@ -48,6 +54,7 @@ export const Cigars = ({ cigarsHome, cigarsSearch, cigarFilter, loading }) => {
             )}
           </div>
         )}
+        {error && <h3>{error}</h3>}
       </Cigar>
     </>
   );
