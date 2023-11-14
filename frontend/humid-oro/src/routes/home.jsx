@@ -26,20 +26,27 @@ export default function Home() {
   const [strength, setStrength] = useState();
   const [brand, setBrand] = useState();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   async function getCigars() {
-    const url = `http://127.0.0.1:8001/cigar/`;
     try {
+      const url = `http://127.0.0.1:8001/cigar/`;
       const response = await fetch(url);
-      const result = await response.json();
-      {
-        Home;
+      if (response.ok) {
+        const result = await response.json();
+        {
+          Home;
+        }
+        console.log(result);
+        setCigarsHome(result);
+        setLoading(false);
+        return result;
+      } else {
+        setError(
+          "There seems to be an error connecting to our servers, please try again."
+        );
       }
-      console.log(result);
-      setCigarsHome(result);
-      setLoading(false);
-      return result;
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err.message);
     }
   }
   useEffect(() => {
@@ -188,15 +195,12 @@ export default function Home() {
           brandChange={brandChange}
           cigarsHome={cigarsHome}
         />
-        {/* {loading == true ? (
-          <img src="../../public/ezgif.com-crop.gif" className="gif" />
-        ) : ( */}
         <Cigars
           cigarsHome={cigarsHome}
           cigarFilter={cigarFilter}
           loading={loading}
+          error={error}
         />
-        {/* )} */}
       </HomeDiv>
     </>
   );
