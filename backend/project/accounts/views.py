@@ -25,3 +25,11 @@ class UserReviewList(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         return Review.objects.filter(user=user)
+    
+class UserReviewList2(viewsets.ModelViewSet):
+    serializer_class = reviewSerializers.ReviewSerializerList
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Review.objects.filter(user=user)
