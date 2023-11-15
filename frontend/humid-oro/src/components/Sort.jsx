@@ -25,7 +25,14 @@ const Filter = styled.div`
     text-align: center;
   }
 `;
-export const Sort = ({ ascendingOrigin, descendingOrigin }) => {
+export const Sort = ({
+  ascendingOrigin,
+  descendingOrigin,
+  ascendingStrength,
+  descendingStrength,
+  ascendingBrand,
+  descendingBrand,
+}) => {
   return (
     <>
       <Filter>
@@ -42,8 +49,12 @@ export const Sort = ({ ascendingOrigin, descendingOrigin }) => {
           <option value={"Origin"}>Country Of Origin</option>
         </select> */}
         <h3>Strength</h3>
-        <button>Ascending</button>
-        <button>Descending</button>
+        <button onClick={ascendingStrength} value={"strength"}>
+          Ascending
+        </button>
+        <button onClick={descendingStrength} value={"-strength"}>
+          Descending
+        </button>
         {/* <select onChange={strengthChange}>
           <option value={"Strength"}>Strength</option>
           <option value={"Mild"}>Mild</option>
@@ -53,8 +64,12 @@ export const Sort = ({ ascendingOrigin, descendingOrigin }) => {
           <option value={"Full"}>Full</option>
         </select> */}
         <h3>Brand</h3>
-        <button>Ascending</button>
-        <button>Descending</button>
+        <button onClick={ascendingBrand} value={"brand"}>
+          Ascending
+        </button>
+        <button onClick={descendingBrand} value={"-brand"}>
+          Descending
+        </button>
         {/* <select onChange={brandChange}>
           <option value={"Brand"}>Brand</option>
         </select> */}
