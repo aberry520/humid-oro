@@ -4,6 +4,7 @@ import { Cigars } from "../components/Cigars";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { Sort } from "../components/Sort";
+import { CigarCard } from "../components/CigarCard";
 
 const HomeDiv = styled.div`
   margin: 10px auto;
@@ -54,125 +55,126 @@ export default function Home() {
     getCigars();
   }, []);
 
-  useEffect(() => {
-    if (origin !== undefined && origin !== "Origin") {
-      const originFilter = cigarsHome.results.filter(
-        (cigar) => cigar.origin === origin
-      );
-      setCigarFilter(originFilter);
-    } else {
-      setCigarFilter();
-    }
-    if (strength !== undefined && strength !== "Strength") {
-      const multiFilter = cigarsHome.results.filter(
-        (cigar) => cigar.strength === strength && cigar.origin === origin
-      );
-      setCigarFilter(multiFilter);
-    }
-    if (brand !== undefined && brand !== "Brand") {
-      const multiFilter = cigarsHome.results.filter(
-        (cigar) => cigar.brand === brand && cigar.origin === origin
-      );
-      setCigarFilter(multiFilter);
-    }
-    if (
-      brand !== undefined &&
-      brand !== "Brand" &&
-      origin !== undefined &&
-      origin !== "Origin" &&
-      strength !== undefined &&
-      strength !== "Strength"
-    ) {
-      const multiFilter = cigarsHome.results.filter(
-        (cigar) =>
-          cigar.brand.name === brand &&
-          cigar.strength === strength &&
-          cigar.origin === origin
-      );
-      setCigarFilter(multiFilter);
-    }
-  }, [origin]);
+  // useEffect(() => {
+  //   if (origin !== undefined && origin !== "Origin") {
+  //     const originFilter = cigarsHome.results.filter(
+  //       (cigar) => cigar.origin === origin
+  //     );
+  //     setCigarFilter(originFilter);
+  //   } else {
+  //     setCigarFilter();
+  //   }
+  //   if (strength !== undefined && strength !== "Strength") {
+  //     const multiFilter = cigarsHome.results.filter(
+  //       (cigar) => cigar.strength === strength && cigar.origin === origin
+  //     );
+  //     setCigarFilter(multiFilter);
+  //   }
+  //   if (brand !== undefined && brand !== "Brand") {
+  //     const multiFilter = cigarsHome.results.filter(
+  //       (cigar) => cigar.brand === brand && cigar.origin === origin
+  //     );
+  //     setCigarFilter(multiFilter);
+  //   }
+  //   if (
+  //     brand !== undefined &&
+  //     brand !== "Brand" &&
+  //     origin !== undefined &&
+  //     origin !== "Origin" &&
+  //     strength !== undefined &&
+  //     strength !== "Strength"
+  //   ) {
+  //     const multiFilter = cigarsHome.results.filter(
+  //       (cigar) =>
+  //         cigar.brand.name === brand &&
+  //         cigar.strength === strength &&
+  //         cigar.origin === origin
+  //     );
+  //     setCigarFilter(multiFilter);
+  //   }
+  // }, [origin]);
 
-  useEffect(() => {
-    if (strength !== undefined && strength !== "Strength") {
-      const strengthFilter = cigarsHome.results.filter(
-        (cigar) => cigar.strength === strength
-      );
-      setCigarFilter(strengthFilter);
-    } else {
-      setCigarFilter();
-    }
-    if (origin !== undefined && origin !== "Origin") {
-      const multiFilter = cigarsHome.results.filter(
-        (cigar) => cigar.origin === origin && cigar.strength === strength
-      );
-      setCigarFilter(multiFilter);
-    }
-    if (brand !== undefined && brand !== "Brand") {
-      const multiFilter = cigarsHome.results.filter(
-        (cigar) => cigar.brand.name === brand && cigar.strength === strength
-      );
-      setCigarFilter(multiFilter);
-    }
-    if (
-      brand !== undefined &&
-      brand !== "Brand" &&
-      origin !== undefined &&
-      origin !== "Origin" &&
-      strength !== undefined &&
-      strength !== "Strength"
-    ) {
-      const multiFilter = cigarsHome.results.filter(
-        (cigar) =>
-          cigar.brand.name === brand &&
-          cigar.strength === strength &&
-          cigar.origin === origin
-      );
-      setCigarFilter(multiFilter);
-    }
-  }, [strength]);
+  // useEffect(() => {
+  //   if (strength !== undefined && strength !== "Strength") {
+  //     const strengthFilter = cigarsHome.results.filter(
+  //       (cigar) => cigar.strength === strength
+  //     );
+  //     setCigarFilter(strengthFilter);
+  //   } else {
+  //     setCigarFilter();
+  //   }
+  //   if (origin !== undefined && origin !== "Origin") {
+  //     const multiFilter = cigarsHome.results.filter(
+  //       (cigar) => cigar.origin === origin && cigar.strength === strength
+  //     );
+  //     setCigarFilter(multiFilter);
+  //   }
+  //   if (brand !== undefined && brand !== "Brand") {
+  //     const multiFilter = cigarsHome.results.filter(
+  //       (cigar) => cigar.brand.name === brand && cigar.strength === strength
+  //     );
+  //     setCigarFilter(multiFilter);
+  //   }
+  //   if (
+  //     brand !== undefined &&
+  //     brand !== "Brand" &&
+  //     origin !== undefined &&
+  //     origin !== "Origin" &&
+  //     strength !== undefined &&
+  //     strength !== "Strength"
+  //   ) {
+  //     const multiFilter = cigarsHome.results.filter(
+  //       (cigar) =>
+  //         cigar.brand.name === brand &&
+  //         cigar.strength === strength &&
+  //         cigar.origin === origin
+  //     );
+  //     setCigarFilter(multiFilter);
+  //   }
+  // }, [strength]);
 
-  useEffect(() => {
-    if (brand !== undefined && brand !== "Brand") {
-      console.log("hi ", brand);
-      const brandFilter = cigarsHome.results.filter(
-        (cigar) => cigar.brand.name === brand
-      );
-      setCigarFilter(brandFilter);
-    } else {
-      setCigarFilter();
-    }
-    if (origin !== undefined && origin !== "Origin") {
-      const multiFilter = cigarsHome.results.filter(
-        (cigar) => cigar.origin === origin && cigar.origin === origin
-      );
-      setCigarFilter(multiFilter);
-    }
-    if (strength !== undefined && strength !== "Strength") {
-      const multiFilter = cigarsHome.results.filter(
-        (cigar) => cigar.brand.name === brand && cigar.strength === strength
-      );
-      setCigarFilter(multiFilter);
-    }
+  // useEffect(() => {
+  //   if (brand !== undefined && brand !== "Brand") {
+  //     console.log("hi ", brand);
+  //     const brandFilter = cigarsHome.results.filter(
+  //       (cigar) => cigar.brand.name === brand
+  //     );
+  //     setCigarFilter(brandFilter);
+  //   } else {
+  //     setCigarFilter();
+  //   }
+  //   if (origin !== undefined && origin !== "Origin") {
+  //     const multiFilter = cigarsHome.results.filter(
+  //       (cigar) => cigar.origin === origin && cigar.origin === origin
+  //     );
+  //     setCigarFilter(multiFilter);
+  //   }
+  //   if (strength !== undefined && strength !== "Strength") {
+  //     const multiFilter = cigarsHome.results.filter(
+  //       (cigar) => cigar.brand.name === brand && cigar.strength === strength
+  //     );
+  //     setCigarFilter(multiFilter);
+  //   }
 
-    if (
-      brand !== undefined &&
-      brand !== "Brand" &&
-      origin !== undefined &&
-      origin !== "Origin" &&
-      strength !== undefined &&
-      strength !== "Strength"
-    ) {
-      const multiFilter = cigarsHome.results.filter(
-        (cigar) =>
-          cigar.brand.name === brand &&
-          cigar.strength === strength &&
-          cigar.origin === origin
-      );
-      setCigarFilter(multiFilter);
-    }
-  }, [brand]);
+  //   if (
+  //     brand !== undefined &&
+  //     brand !== "Brand" &&
+  //     origin !== undefined &&
+  //     origin !== "Origin" &&
+  //     strength !== undefined &&
+  //     strength !== "Strength"
+  //   ) {
+  //     const multiFilter = cigarsHome.results.filter(
+  //       (cigar) =>
+  //         cigar.brand.name === brand &&
+  //         cigar.strength === strength &&
+  //         cigar.origin === origin
+  //     );
+  //     setCigarFilter(multiFilter);
+  //   }
+  // }, [brand]);
 
+  const [counter, setCounter] = useState(1);
   function strengthChange(e) {
     const type = e.target.value;
     setStrength(type);
@@ -186,10 +188,12 @@ export default function Home() {
     setBrand(type);
   }
   // console.log(cigarFilter);
-  const [sort, setSort] = useState();
-  async function getCigarsSort() {
+  const [sort, setSort] = useState(null);
+  const [next, setNext] = useState(1);
+  const prev = next - 1;
+  async function getCigarsSort(page) {
     try {
-      const url = `http://127.0.0.1:8001/cigar/?ordering=${sort}`;
+      const url = `http://127.0.0.1:8001/cigar/?ordering=${sort}&page=${page}`;
       const response = await fetch(url);
       if (response.ok) {
         const result = await response.json();
@@ -210,10 +214,12 @@ export default function Home() {
     }
   }
   useEffect(() => {
-    getCigarsSort();
+    getCigarsSort(next);
+    // setNext(2);
   }, [sort]);
   function ascendingOrigin(e) {
     setSort(e.target.value);
+    setNext(1);
   }
   function descendingOrigin(e) {
     setSort(e.target.value);
@@ -230,6 +236,10 @@ export default function Home() {
   function descendingStrength(e) {
     setSort(e.target.value);
   }
+  useEffect(() => {
+    setNext(2);
+  }, []);
+  console.log(next);
   return (
     <>
       <HomeDiv>
@@ -242,12 +252,22 @@ export default function Home() {
         <Sort
           ascendingOrigin={ascendingOrigin}
           descendingOrigin={descendingOrigin}
+          ascendingStrength={ascendingStrength}
+          descendingStrength={descendingStrength}
+          ascendingBrand={ascendingBrand}
+          descendingBrand={descendingBrand}
         />
         <Cigars
           cigarsHome={cigarsHome}
           cigarFilter={cigarFilter}
           loading={loading}
           error={error}
+          setCounter={setCounter}
+          counter={counter}
+          next={next}
+          prev={prev}
+          setNext={setNext}
+          getCigarsSort={getCigarsSort}
         />
       </HomeDiv>
     </>
