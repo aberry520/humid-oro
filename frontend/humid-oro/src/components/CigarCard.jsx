@@ -33,7 +33,7 @@ export const CigarCard = ({ cigars }) => {
   return (
     <>
       <Card>
-        <img src={cigars.thumbnail} />
+        <img src={cigars.thumbnail} loading="lazy" />
         <h2>{cigars.name}</h2>
         <h3>
           Brand: {cigars.brand.name}
