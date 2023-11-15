@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Pagination } from "./Pagination";
+// import { Pagination } from "./Pagination";
 import { CigarCard } from "./CigarCard";
 import { Link } from "react-router-dom";
 
@@ -14,6 +14,10 @@ const Cigar = styled.div`
     text-align: center;
   }
   box-shadow: 1px 29px 40px 0px rgba(0, 0, 0, 0.25);
+`;
+const Loading = styled.div`
+  margin-top: 20%;
+  text-align: center;
 `;
 const CigarCards = styled.div`
   display: flex;
@@ -76,9 +80,11 @@ export const Cigars = ({
     <>
       <Cigar>
         {loading == true ? (
-          <img src="../../public/ezgif.com-crop.gif" className="gif" />
+          <Loading>
+            <img src="../../public/ezgif.com-crop.gif" className="gif" />
+            <h3>Loading Cigars...</h3>
+          </Loading>
         ) : (
-          // <p>Loading...</p>
           <div>
             {cigarsHome && <h1>All Cigars</h1>}
             {cigarsSearch ? cigarsSearch && <h1>Search Results</h1> : null}
@@ -94,19 +100,21 @@ export const Cigars = ({
               </CigarCards>
             )}
             {cigarsSearch && (
-              <Pagination
-                itemsPerPage={15}
-                items={items}
-                setCounter={setCounter}
-                counter={counter}
-                next={next}
-                setNext={setNext}
-                getCigarsSort={getCigarsSort}
-              />
+              <CigarCards>
+                {items?.map((item) => (
+                  <Link key={item.id} to={"/info/" + item.id}>
+                    <CigarCard key={item.id} cigars={item} loading="lazy" />
+                  </Link>
+                ))}
+              </CigarCards>
             )}
             <Page>
               {cigarsHome?.previous && <button onClick={loadPrev}>Prev</button>}
-              {cigarsHome && <p>Page {next - 1}</p>}
+              {cigarsHome && (
+                <p>
+                  Page {next - 1} of {Math.ceil(cigarsHome?.count / 30)}
+                </p>
+              )}
               {cigarsHome?.next && <button onClick={loadNext}>Next</button>}
             </Page>
           </div>
