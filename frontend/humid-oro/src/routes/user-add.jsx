@@ -1,22 +1,22 @@
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
-import { Filters } from "../components/Filters";
-import { Cigars } from "../components/Cigars";
+
 import styled from "styled-components";
 import Cookies from "js-cookie";
-import { NavBar } from "../components/Nav/NavBar";
-import { Pagination } from "../components/Pagination";
+
 import { useEffect, useState } from "react";
 import { ReviewForm } from "../components/ReviewForm";
 
-const InfoDiv = styled.div`
-  /* border: black solid; */
-  margin: 10px auto;
-  /* display: grid; */
-  grid-template-columns: 1fr 3fr;
-  max-width: 90vw;
-  img {
-    width: 40%;
-    height: auto;
+const AddForm = styled.div`
+  border: black solid;
+  margin: auto;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: fit-content;
+    select {
+      max-width: fit-content;
+    }
   }
 `;
 
@@ -164,53 +164,54 @@ export default function UserAdd() {
   //   console.log(brand);
   return (
     <>
-      {/* <input placeholder="Search Brands" onChange={brandSearchChange} /> */}
-      <form>
-        <select onChange={addBrand}>
-          <option>Brand</option>
-          <option value={"Other"}>Add Brand</option>
-          {brandSearchResults.results?.map((brand) => {
-            return (
-              <option key={brand.id} value={brand.id}>
-                {brand.name}
-              </option>
-            );
-          })}
-        </select>
-        {post == "cigar&brand" ? (
+      <AddForm>
+        <form>
+          <select onChange={addBrand}>
+            <option>Brand</option>
+            <option value={"Other"}>Add Brand</option>
+            {brandSearchResults.results?.map((brand) => {
+              return (
+                <option key={brand.id} value={brand.id}>
+                  {brand.name}
+                </option>
+              );
+            })}
+          </select>
+          {post == "cigar&brand" ? (
+            <input
+              placeholder="Enter New Brand"
+              onChange={addBrandChange}
+              required
+            />
+          ) : null}
+
+          <input placeholder="Cigar Name" onChange={nameChange} required />
           <input
-            placeholder="Enter New Brand"
-            onChange={addBrandChange}
+            placeholder="Country of Origin"
+            onChange={originChange}
             required
           />
-        ) : null}
+          <input placeholder="Wrapper" onChange={wrapperChange} required />
+          <input placeholder="Filler" onChange={fillerChange} required />
 
-        <input placeholder="Cigar Name" onChange={nameChange} required />
-        <input
-          placeholder="Country of Origin"
-          onChange={originChange}
-          required
-        />
-        <input placeholder="Wrapper" onChange={wrapperChange} required />
-        <input placeholder="Filler" onChange={fillerChange} required />
+          <select value={strength} onChange={strengthChange} required>
+            <option>Strength</option>
+            <option value={"Mild"}>Mild</option>
+            <option value={"Mild-Medium"}>Mild-Medium</option>
+            <option value={"Medium"}>Medium</option>
+            <option value={"Medium-Full"}>Medium-Full</option>
+            <option value={"Full"}>Full</option>
+          </select>
+          <input placeholder="Length" onChange={lengthChange} required />
+          <input placeholder="Gauge" onChange={gaugeChange} required />
+          <input placeholder="Wrapper Color" onChange={colorChange} required />
 
-        <select value={strength} onChange={strengthChange} required>
-          <option>Strength</option>
-          <option value={"Mild"}>Mild</option>
-          <option value={"Mild-Medium"}>Mild-Medium</option>
-          <option value={"Medium"}>Medium</option>
-          <option value={"Medium-Full"}>Medium-Full</option>
-          <option value={"Full"}>Full</option>
-        </select>
-        <input placeholder="Length" onChange={lengthChange} required />
-        <input placeholder="Gauge" onChange={gaugeChange} required />
-        <input placeholder="Wrapper Color" onChange={colorChange} required />
-
-        <button type="button" onClick={handleSubmit}>
-          Add Cigar
-        </button>
-      </form>
-      {error && <h3>{error}</h3>}
+          <button type="button" onClick={handleSubmit}>
+            Add Cigar
+          </button>
+        </form>
+        {error && <h3>{error}</h3>}
+      </AddForm>
     </>
   );
 }
