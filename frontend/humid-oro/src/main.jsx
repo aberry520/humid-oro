@@ -3,11 +3,10 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/root.jsx";
-import Home, { loader as homeLoader, loader } from "./routes/home";
+import Home from "./routes/home";
 import SignUp from "./routes/signup";
 import LogIn from "./routes/login";
 import ErrorPage from "./routes/error-page";
-// import { loader } from './routes/home'
 import Search from "./routes/search";
 import User, { loader as userLoader } from "./routes/user";
 import CigarInfo from "./routes/cigar-info";
@@ -22,7 +21,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        // loader: homeLoader,
       },
       {
         path: "signup/",
@@ -40,17 +38,14 @@ const router = createBrowserRouter([
       {
         path: "search/:search",
         element: <Search />,
-        // loader: searchLoader,
       },
       {
         path: "info/:id",
         element: <CigarInfo />,
-        // loader: searchLoader,
       },
       {
         path: "add/",
         element: <UserAdd />,
-        // loader: searchLoader,
       },
     ],
   },
