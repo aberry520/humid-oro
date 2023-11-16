@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { useAuth } from "../AuthContext";
 
 export const LogInForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { setIsAuth } = useAuth();
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleChangeUsername = (e) => {
@@ -21,8 +21,6 @@ export const LogInForm = () => {
       username,
       password,
     };
-    console.log(JSON.stringify(user));
-    console.log(Cookies.get("csrftoken"));
     const url = "http://127.0.0.1:8001/dj-rest-auth/login/";
     const data = await fetch(url, {
       method: "POST",
@@ -33,9 +31,18 @@ export const LogInForm = () => {
       body: JSON.stringify(user),
     }).then((response) => response.json());
     console.log(data);
-    Cookies.set("Authorization", `Token ${data.key}`);
-    setIsAuth(true);
-    navigate("/user");
+    if (data?.key) {
+      Cookies.set("Authorization", `Token ${data?.key}`);
+      navigate("/user");
+    }
+    if (data?.password) {
+      setErrorMessage(data?.password[0]);
+      setError(true);
+    }
+    if (data?.non_field_errors) {
+      setErrorMessage(data?.non_field_errors[0]);
+      setError(true);
+    }
   };
   const handleClick = (e) => {
     navigate("/signup");
@@ -65,6 +72,7 @@ export const LogInForm = () => {
       <button type="button" onClick={handleClick}>
         Create Account
       </button>
+      {error && <p>{errorMessage}</p>}
     </>
   );
 };
