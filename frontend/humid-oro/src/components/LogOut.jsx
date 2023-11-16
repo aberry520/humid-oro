@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { useAuth } from "../AuthContext";
 export const LogOut = () => {
-  const { setIsAuth } = useAuth();
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,7 +12,6 @@ export const LogOut = () => {
         Authorization: `${Cookies.get("Authorization")}`,
       },
     }).then((response) => response.json());
-    setIsAuth(false);
     Cookies.remove("Authorization");
     Cookies.remove("UserID");
     console.log(data);

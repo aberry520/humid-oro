@@ -1,10 +1,8 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import { Filters } from "../components/Filters";
-import { Cigars } from "../components/Cigars";
+
 import styled from "styled-components";
 import Cookies from "js-cookie";
-import { NavBar } from "../components/Nav/NavBar";
-import { Pagination } from "../components/Pagination";
+
 import { useEffect, useState } from "react";
 import { ReviewForm } from "../components/ReviewForm";
 

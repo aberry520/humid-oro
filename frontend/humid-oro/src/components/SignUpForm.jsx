@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
 import Cookies from "js-cookie";
-import { useAuth } from "../AuthContext";
 import { useState } from "react";
 
 export const SignUpForm = () => {
@@ -9,7 +8,6 @@ export const SignUpForm = () => {
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [email, setEmail] = useState("");
-  const { setIsAuth } = useAuth();
   const navigate = useNavigate();
 
   const handleChangeUsername = (e) => {
