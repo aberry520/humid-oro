@@ -1,6 +1,5 @@
 import { redirect, useLoaderData, Link } from "react-router-dom";
 import Cookies from "js-cookie";
-import { useAuth } from "../AuthContext";
 import { LogOut } from "../components/LogOut";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
@@ -10,7 +9,7 @@ const Profile = styled.div`
   /* border: black solid; */
   /* background-color: #364f59; */
   /* display: flex; */
-  margin: auto;
+  margin: 10px auto;
   width: fit-content;
   img {
     height: auto;
@@ -24,6 +23,19 @@ const UserList = styled.div`
   margin: auto;
   min-width: fit-content;
   max-width: 50ch;
+`;
+const Loading = styled.div`
+  margin-bottom: 20%;
+  position: absolute;
+  text-align: center;
+  border: solid black;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 50%;
+  cursor: wait;
+  .gif {
+    max-width: 300px;
+  }
 `;
 
 export async function loader() {
@@ -44,14 +56,17 @@ export async function loader() {
     {
       User;
     }
+    // setLoading(false);
     return userdata;
   } catch (error) {
+    console.error("ERROR: ", error);
     return redirect("/login");
   }
 }
 export default function User() {
   const user = useLoaderData();
   const [userList, setUserList] = useState();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     getList();
   }, []);
@@ -64,6 +79,7 @@ export default function User() {
       },
     }).then((response) => response.json());
     console.log(userList);
+    setLoading(false);
     setUserList(userList);
   }
 
@@ -82,15 +98,22 @@ export default function User() {
         <p>Welcome {displayName()}!</p>
         {/* <img src={user.profile.avatar} /> */}
       </Profile>
-      <UserList>
-        {userList?.results.map((review) => {
-          return (
-            // <Link key={review.cigar.id} to={"/info/" + review.cigar.id}>
-            <UserReviewItem key={review.cigar.id} review={review} />
-            // </Link>
-          );
-        })}
-      </UserList>
+      {loading ? (
+        <Loading>
+          <img src="../../public/ezgif.com-crop.gif" className="gif" />
+          <h3>Loading Your Reviews...</h3>
+        </Loading>
+      ) : (
+        <UserList>
+          {userList?.results.map((review) => {
+            return (
+              // <Link key={review.cigar.id} to={"/info/" + review.cigar.id}>
+              <UserReviewItem key={review.cigar.id} review={review} />
+              // </Link>
+            );
+          })}
+        </UserList>
+      )}
     </>
   );
 }

@@ -2,13 +2,17 @@ import styled from "styled-components";
 // import { Pagination } from "./Pagination";
 import { CigarCard } from "./CigarCard";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Cigar = styled.div`
   border: solid #bf976d;
-  /* background-color: #151414; */
-  margin: 5px;
+  background-color: #fff8f0;
+  margin: 5px 20px;
+  /* margin-right: 20px; */
   min-width: fit-content;
+  max-width: 1200px;
   min-height: fit-content;
+  padding: 3%;
   h1 {
     margin: 25px auto;
     text-align: center;
@@ -16,8 +20,20 @@ const Cigar = styled.div`
   box-shadow: 1px 29px 40px 0px rgba(0, 0, 0, 0.25);
 `;
 const Loading = styled.div`
-  margin-top: 20%;
+  margin-bottom: 20%;
+  position: absolute;
   text-align: center;
+  /* border: solid black; */
+  height: 60vh;
+  width: 100vw;
+  right: 0;
+  top: 20;
+  padding-left: 80%;
+  padding-top: 10%;
+  cursor: wait;
+  .gif {
+    max-width: 300px;
+  }
 `;
 const CigarCards = styled.div`
   display: flex;
@@ -29,13 +45,15 @@ const Page = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  gap: 25px;
+  margin-top: 3%;
+  /* gap: 20%; */
 `;
 export const Cigars = ({
   cigarsHome,
   cigarsSearch,
   cigarFilter,
   loading,
+  setLoading,
   error,
   setCounter,
   counter,
@@ -68,14 +86,21 @@ export const Cigars = ({
       getCigarsSort(next);
       setCounter(1);
       setNext(next + 1);
+      window.scrollTo(0, 0);
+      setLoading(true);
     }
   }
   function loadPrev() {
     if (next > 2) {
       getCigarsSort(next - 2);
       setNext(next - 1);
+      window.scrollTo(0, 0);
+      setLoading(true);
     }
   }
+  // useEffect(() => {
+
+  // }, [next]);
   return (
     <>
       <Cigar>
