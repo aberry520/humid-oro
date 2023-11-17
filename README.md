@@ -1,21 +1,13 @@
 # Humid-oro
-Humid-oro is an app designed for the cigar afficianado. \
-Here you will be able to track and rate your cigars that you have previuously smoked. You will also be able to browse for your next cigar by the orgin of tobacco, the type of wrapper leaf, or the flavor profile.
+
+Humid-oro is designed with the cigar aficionado in mind.\
+With Humid-oro you are able to rate and review cigars that you have previously enjoyed. And with the ability to search our collection of cigars you will have no issues finding your next one. But if we don’t have it, you can add your own that is then available to all other users to review as well.
 
 ## Requirements
+
 - Users can add a cigar by creating a new entry or searching for an exisisting one.
 - When adding a cigar the user will have muliple options\
- to fill out such as:
-        
-        - Name
-        - Rating System
-        - Wrapper, Binder, Filler
-        - Shade and Origin
-        - Size: Ring Gauge, Length
-        - Smoke Time
-        - Price (optional)
-- 
-- 
+  to fill out such as: - Name - Rating System - Wrapper, Binder, Filler - Shade and Origin - Size: Ring Gauge, Length - Smoke Time - Price (optional)
 
 ## Tech Stack
 
@@ -27,14 +19,19 @@ Here you will be able to track and rate your cigars that you have previuously sm
 ## Data Models
 
 ### Tables
+
 - Cigars
-    - ID -> Primary Key (auto)
-    - User ID - Foreign
-    - Name
-    - Origin
-    - Wrapper
-    - Filler
-    - Binder
+  - ID -> Primary Key (auto)
+  - User ID - Foreign
+  - Name
+  - Origin
+  - Wrapper
+  - Filler
+  - Binder
 
 ### Relationships
-Cigars (many) -> User's (many)
+
+Cigars (one) -> User's (many)
+Profile (one) -> User (one)
+Brand (one) -> Cigars (many)
+Reviews (many) -> Cigar (one)
