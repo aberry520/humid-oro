@@ -1,6 +1,5 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-// import { Search } from "react-router-dom";
 import styled from "styled-components";
 
 const SearchDiv = styled.div`

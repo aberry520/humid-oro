@@ -1,10 +1,7 @@
-import { useLoaderData } from "react-router-dom";
-import { Filters } from "../components/Filters";
 import { Cigars } from "../components/Cigars";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { Sort } from "../components/Sort";
-import { CigarCard } from "../components/CigarCard";
 
 const HomeDiv = styled.div`
   margin: 10px auto;
@@ -26,12 +23,8 @@ const HomeDiv = styled.div`
 `;
 
 export default function Home() {
-  // const cigarsHomeInit = useLoaderData();
   const [cigarsHome, setCigarsHome] = useState();
   const [cigarFilter, setCigarFilter] = useState();
-  const [origin, setOrigin] = useState();
-  const [strength, setStrength] = useState();
-  const [brand, setBrand] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   async function getCigars() {
@@ -61,18 +54,6 @@ export default function Home() {
   }, []);
 
   const [counter, setCounter] = useState(1);
-  function strengthChange(e) {
-    const type = e.target.value;
-    setStrength(type);
-  }
-  function originChange(e) {
-    const type = e.target.value;
-    setOrigin(type);
-  }
-  function brandChange(e) {
-    const type = e.target.value;
-    setBrand(type);
-  }
 
   const [sort, setSort] = useState(null);
   const [next, setNext] = useState(1);

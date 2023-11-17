@@ -16,7 +16,6 @@ export default function ErrorPage() {
           rows="10"
           cols="50"
           required
-          // onChange={handleChangeReview}
         />
         <br />
         <button type="button">Submit</button>

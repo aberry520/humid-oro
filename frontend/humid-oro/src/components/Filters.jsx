@@ -1,15 +1,7 @@
 import styled from "styled-components";
 
 const Filter = styled.div`
-  /* border: black solid; */
-  /* background-color: #151414; */
-
-  /* margin-left: 20px; */
   margin: 5px;
-  /* display: flex; */
-  /* justify-content: center; */
-  /* flex-direction: column; */
-  /* align-items: center; */
   max-width: 20vw;
   min-width: fit-content;
   min-height: 80vh;
@@ -31,9 +23,6 @@ const Categories = styled.div`
   margin-left: 15px;
   max-height: 80vh;
 `;
-const Category = styled.div`
-  /* display: flex; */
-`;
 export const Filters = ({
   strengthChange,
   originChange,
@@ -41,7 +30,6 @@ export const Filters = ({
   cigarsHome,
   cigarsSearch,
 }) => {
-  // console.log(cigarsHome);
   const allOrigins = [];
   cigarsHome?.results.map((cigar) => {
     allOrigins.push(cigar.origin);
@@ -53,8 +41,7 @@ export const Filters = ({
     allBrands.push(cigar.brand.name);
   });
   const uniqueBrands = [...new Set(allBrands)];
-  // console.log("New: ", allOrigins);
-  // console.log(uniqueOrigins);
+
   return (
     <>
       <Categories>

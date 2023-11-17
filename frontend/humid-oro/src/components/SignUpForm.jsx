@@ -1,6 +1,4 @@
 import { useNavigate } from "react-router-dom";
-
-import Cookies from "js-cookie";
 import { useState } from "react";
 
 export const SignUpForm = () => {

@@ -1,15 +1,7 @@
 import styled from "styled-components";
 
 const Filter = styled.div`
-  /* border: black solid; */
-  /* background-color: #151414; */
-  /* margin-left: 20px; */
   margin: 5px;
-  /* display: flex; */
-  /* justify-content: center; */
-  /* flex-direction: column; */
-  /* align-items: center; */
-
   text-align: center;
   max-width: 20vw;
   min-width: fit-content;
@@ -42,7 +34,6 @@ const Filter = styled.div`
   }
 `;
 const Categories = styled.div`
-  /* display: flex; */
   text-align: center;
   .sort {
     font-size: 1.25em;
@@ -51,9 +42,7 @@ const Categories = styled.div`
   margin-left: 15px;
   max-height: 80vh;
 `;
-const Category = styled.div`
-  /* display: flex; */
-`;
+const Category = styled.div``;
 const Buttons = styled.div`
   display: flex;
   gap: 10px;

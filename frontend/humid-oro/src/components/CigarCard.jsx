@@ -1,20 +1,18 @@
 import styled from "styled-components";
 
 const Card = styled.div`
-  /* border: solid #bf976d; */
   margin: 0;
   min-height: 500px;
-  /* max-height: fit-content; */
+
   max-width: 200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 8px;
-  /* flex-direction: column; */
+
   background-color: #ffffff;
-  /* box-shadow: 1px 29px 81px 0px rgba(0, 0, 0, 0.75); */
+
   img {
-    /* margin-top: 15px; */
     width: 200px;
     height: 300px;
     object-fit: contain;
@@ -43,9 +41,6 @@ export const CigarCard = ({ cigars }) => {
           <br />
           Strength: {cigars.strength}
           <br />
-          {/* Length: {cigars.length}"
-          <br />
-          Ring Gauge: {cigars.gauge} */}
         </h3>
       </Card>
     </>

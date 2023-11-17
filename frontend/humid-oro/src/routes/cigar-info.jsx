@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import styled from "styled-components";
 import Cookies from "js-cookie";
@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { ReviewForm } from "../components/ReviewForm";
 
 const InfoDiv = styled.div`
-  /* border: black solid; */
   background-color: white;
   padding: 25px;
   margin: 20px auto;

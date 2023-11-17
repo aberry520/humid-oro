@@ -2,7 +2,6 @@ import { LogInForm } from "../components/LogInForm";
 import styled from "styled-components";
 
 const LogInDiv = styled.div`
-  /* border: black solid; */
   margin: 19vh auto;
   width: fit-content;
 `;

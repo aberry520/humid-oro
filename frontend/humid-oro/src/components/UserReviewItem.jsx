@@ -34,7 +34,6 @@ const Check = styled.div`
   padding: 5px;
 `;
 const Tip = styled.div`
-  /* color: #997550; */
   background-color: #fff8f0;
   border: black solid;
   position: absolute;
@@ -52,7 +51,6 @@ export const UserReviewItem = ({ review }) => {
     setDeleteCheck(false);
   };
   const handleYes = async (e) => {
-    // e.preventDefault();
     const url = `http://127.0.0.1:8001/reviewsuserlist/${review.id}`;
     await fetch(url, {
       method: "DELETE",

@@ -1,6 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-// import { Search } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Search } from "./Search";
 
@@ -27,8 +25,6 @@ const Features = styled.div`
   justify-content: space-evenly;
 `;
 const NavBorder = styled.div`
-  /* border: black solid; */
-  /* background-color: #1a1a1a; */
   margin: 0;
 `;
 

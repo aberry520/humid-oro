@@ -1,19 +1,23 @@
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
 import Cookies from "js-cookie";
 
 import { useEffect, useState } from "react";
-import { ReviewForm } from "../components/ReviewForm";
 
 const AddForm = styled.div`
-  /* border: black solid; */
   margin: auto;
+  text-align: center;
   form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     min-width: fit-content;
+    align-items: center;
+    input,
+    select {
+      border-radius: 5px;
+    }
     select {
       max-width: fit-content;
     }
@@ -21,11 +25,9 @@ const AddForm = styled.div`
 `;
 
 export default function UserAdd() {
-  const params = useParams();
   const [brandSearch, setBrandSearch] = useState();
   const [brandSearchResults, setBrandSearchResults] = useState([]);
   const [post, setPost] = useState("addcigar");
-  ///////////////////////
   const [brand, setBrand] = useState();
   const [name, setName] = useState();
   const [origin, setOrigin] = useState();
@@ -126,7 +128,7 @@ export default function UserAdd() {
     }
   };
   async function getBrand() {
-    const url = `http://127.0.0.1:8001/brand/`; //?search=${brandSearch}`;
+    const url = `http://127.0.0.1:8001/brand/`;
     try {
       const response = await fetch(url);
       const result = await response.json();
@@ -137,14 +139,7 @@ export default function UserAdd() {
       console.error(error);
     }
   }
-  function brandSearchChange(e) {
-    if (e.target.value.length >= 3) {
-      //   console.log("brand");
-      setBrandSearch(e.target.value);
-    } else {
-      setBrandSearch("");
-    }
-  }
+
   useEffect(() => {
     console.log(brandSearch);
     getBrand();
@@ -161,10 +156,17 @@ export default function UserAdd() {
   function addBrandChange(e) {
     setBrandName(e.target.value);
   }
-  //   console.log(brand);
+
   return (
     <>
       <AddForm>
+        <h4>
+          Don't have what
+          <br />
+          you're looking for?
+          <br />
+          Add your own cigar to review!
+        </h4>
         <form>
           <select onChange={addBrand}>
             <option>Brand</option>

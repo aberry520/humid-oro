@@ -1,14 +1,12 @@
 import styled from "styled-components";
-// import { Pagination } from "./Pagination";
 import { CigarCard } from "./CigarCard";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 
 const Cigar = styled.div`
   border: solid #bf976d;
   background-color: #fff8f0;
   margin: 0px 20px;
-  /* margin-right: 20px; */
+
   min-width: fit-content;
   max-width: 1200px;
   min-height: fit-content;
@@ -23,7 +21,6 @@ const Loading = styled.div`
   margin-bottom: 20%;
   position: absolute;
   text-align: center;
-  /* border: solid black; */
   height: 60vh;
   width: 100vw;
   right: 0;
@@ -52,7 +49,6 @@ const Page = styled.div`
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin-top: 3%;
-  /* gap: 20%; */
 `;
 export const Cigars = ({
   cigarsHome,
@@ -62,9 +58,7 @@ export const Cigars = ({
   setLoading,
   error,
   setCounter,
-  counter,
   next,
-  prev,
   setNext,
   getCigarsSort,
 }) => {
@@ -87,7 +81,6 @@ export const Cigars = ({
     items = cigarFilter;
   }
   function loadNext() {
-    // console.log(cigarsHome.next);
     if (cigarsHome.next !== null) {
       getCigarsSort(next);
       setCounter(1);
@@ -104,9 +97,7 @@ export const Cigars = ({
       setLoading(true);
     }
   }
-  // useEffect(() => {
 
-  // }, [next]);
   return (
     <>
       <Cigar>

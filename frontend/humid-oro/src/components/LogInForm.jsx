@@ -35,14 +35,13 @@ export const LogInForm = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // 'X-CSRFToken': Cookies.get('csrftoken'),
       },
       body: JSON.stringify(user),
     }).then((response) => response.json());
     console.log(data);
     if (data?.key) {
       Cookies.set("Authorization", `Token ${data?.key}`);
-      navigate("/");
+      navigate("/user/");
     }
     if (data?.password) {
       setErrorMessage(data?.password[0]);
