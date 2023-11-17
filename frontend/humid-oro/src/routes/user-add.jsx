@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { ReviewForm } from "../components/ReviewForm";
 
 const AddForm = styled.div`
-  border: black solid;
+  /* border: black solid; */
   margin: auto;
   form {
     display: flex;

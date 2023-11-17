@@ -7,11 +7,24 @@ import { Search } from "./Search";
 const Nav = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+
   max-width: 1000px;
   justify-content: space-around;
   align-items: center;
   margin: auto;
+`;
+const Features = styled.div`
+  .add {
+    max-height: 60px;
+    transition: all 0.2s ease-in-out;
+  }
+  .add:hover {
+    transform: scale(1.1);
+  }
+  display: flex;
+  align-items: center;
+  width: -webkit-fill-available;
+  justify-content: space-evenly;
 `;
 const NavBorder = styled.div`
   /* border: black solid; */
@@ -25,17 +38,28 @@ export const NavBar = () => {
       <NavBorder>
         <Nav>
           <Link to={"/"}>
-            <img src="../public/humidoro.svg" />
+            <img src="../public/humidoro.svg" title="Home" />
           </Link>
-          <div>
+          <Features>
+            <Link to={"/"}>
+              <img className="add" src="../public/home.svg" title="Home" />
+            </Link>
             <Search />
             <Link to={"user/"}>
-              <p>Profile</p>
+              <img
+                className="add"
+                src="../public/user.svg"
+                title="User Profile"
+              />
             </Link>
             <Link to={"add/"}>
-              <p>Add Cigar</p>
+              <img
+                className="add"
+                src="../public/add.svg"
+                title="Add New Cigar"
+              />
             </Link>
-          </div>
+          </Features>
         </Nav>
       </NavBorder>
     </>

@@ -5,12 +5,23 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { UserReviewItem } from "../components/UserReviewItem";
 
+const UserPage = styled.div`
+  margin: 25px 0px;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  /* max-width: fit-content; */
+`;
 const Profile = styled.div`
   /* border: black solid; */
-  /* background-color: #364f59; */
-  /* display: flex; */
-  margin: 10px auto;
+  min-height: 80vh;
+  background-color: #d3bfa8;
+  color: sienna;
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
   width: fit-content;
+  /* max-height: 80vh; */
+  padding: 15px;
   img {
     height: auto;
     width: 10rem;
@@ -18,20 +29,24 @@ const Profile = styled.div`
 `;
 const UserList = styled.div`
   /* border: black solid; */
-  /* background-color: #364f59; */
-
-  margin: auto;
+  /* background-color: #eddac5; */
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto 10px;
   min-width: fit-content;
   max-width: 50ch;
+  gap: 15px;
+  grid-area: 1 / 2 / 2 / 4;
 `;
 const Loading = styled.div`
-  margin-bottom: 20%;
+  /* margin-bottom: 20%; */
   position: absolute;
   text-align: center;
-  border: solid black;
-  height: 100vh;
+  /* border: solid black; */
+  top: 20;
+  height: 50vh;
   width: 100vw;
-  padding-top: 50%;
+  /* padding-top: 50%; */
   cursor: wait;
   .gif {
     max-width: 300px;
@@ -92,28 +107,32 @@ export default function User() {
   }
   return (
     <>
-      <Profile>
-        <h1>My Profile</h1>
-        <LogOut />
-        <p>Welcome {displayName()}!</p>
-        {/* <img src={user.profile.avatar} /> */}
-      </Profile>
-      {loading ? (
-        <Loading>
-          <img src="../../public/ezgif.com-crop.gif" className="gif" />
-          <h3>Loading Your Reviews...</h3>
-        </Loading>
-      ) : (
-        <UserList>
-          {userList?.results.map((review) => {
-            return (
-              // <Link key={review.cigar.id} to={"/info/" + review.cigar.id}>
-              <UserReviewItem key={review.cigar.id} review={review} />
-              // </Link>
-            );
-          })}
-        </UserList>
-      )}
+      <UserPage>
+        <Profile>
+          <h1>My Profile</h1>
+          <LogOut />
+          <h4>Welcome {displayName()}!</h4>
+          <p>You have reviewed a total of {userList?.count} cigars</p>
+        </Profile>
+        {loading ? (
+          <Loading>
+            <img src="../../public/ezgif.com-crop.gif" className="gif" />
+            <h3>Loading Your Reviews...</h3>
+          </Loading>
+        ) : (
+          <>
+            <UserList>
+              {userList?.results.map((review) => {
+                return (
+                  // <Link key={review.cigar.id} to={"/info/" + review.cigar.id}>
+                  <UserReviewItem key={review.cigar.id} review={review} />
+                  // </Link>
+                );
+              })}
+            </UserList>
+          </>
+        )}
+      </UserPage>
     </>
   );
 }

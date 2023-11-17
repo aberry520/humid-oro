@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const Cigar = styled.div`
   border: solid #bf976d;
   background-color: #fff8f0;
-  margin: 5px 20px;
+  margin: 0px 20px;
   /* margin-right: 20px; */
   min-width: fit-content;
   max-width: 1200px;
@@ -37,10 +37,16 @@ const Loading = styled.div`
 `;
 const CigarCards = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: 7px;
 `;
+
+const Results = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
+
 const Page = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -112,9 +118,18 @@ export const Cigars = ({
         ) : (
           <div>
             {cigarsHome && <h1>All Cigars</h1>}
+            {cigarsHome && (
+              <p>
+                Page {next - 1} of {Math.ceil(cigarsHome?.count / 30)}
+              </p>
+            )}
             {cigarsSearch ? cigarsSearch && <h1>Search Results</h1> : null}
             {items?.length <= 0 ? (
-              <h1>Sorry No Results</h1>
+              <Results>
+                <Link to={"/add/"}>
+                  <img className="results" src="../../public/burn.svg" />
+                </Link>
+              </Results>
             ) : (
               <CigarCards>
                 {cigarsHome?.results.map((item) => (

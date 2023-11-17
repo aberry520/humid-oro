@@ -5,6 +5,8 @@ import { useState } from "react";
 
 export const SignUpForm = () => {
   const [username, setUsername] = useState("");
+  const [first_name, setFirstname] = useState("");
+  const [last_name, setLastname] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [email, setEmail] = useState("");
@@ -12,6 +14,12 @@ export const SignUpForm = () => {
 
   const handleChangeUsername = (e) => {
     setUsername(e.target.value);
+  };
+  const handleChangeFirstname = (e) => {
+    setFirstname(e.target.value);
+  };
+  const handleChangeLastname = (e) => {
+    setLastname(e.target.value);
   };
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -26,12 +34,13 @@ export const SignUpForm = () => {
     e.preventDefault();
     const user = {
       username,
+      first_name,
+      last_name,
       email,
       password1,
       password2,
     };
     console.log(JSON.stringify(user));
-    console.log(Cookies.get("csrftoken"));
     const url = "http://127.0.0.1:8001/dj-rest-auth/registration/";
     const data = await fetch(url, {
       method: "POST",
@@ -39,8 +48,11 @@ export const SignUpForm = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
-    }).then((response) => response.json());
+    });
     console.log(data);
+    if (data.ok) {
+      navigate("/login");
+    }
   };
   return (
     <>
@@ -48,15 +60,31 @@ export const SignUpForm = () => {
         <h2>Create Account</h2>
         <input
           type="text"
-          placeholder="enter username"
+          placeholder="username"
           name="username"
           value={username}
           onChange={handleChangeUsername}
         />
         <br />
         <input
+          type="text"
+          placeholder="first name"
+          name="first_name"
+          value={first_name}
+          onChange={handleChangeFirstname}
+        />
+        <br />
+        <input
+          type="text"
+          placeholder="last name"
+          name="last_name"
+          value={last_name}
+          onChange={handleChangeLastname}
+        />
+        <br />
+        <input
           type="email"
-          placeholder="enter email"
+          placeholder="email"
           name="email"
           value={email}
           onChange={handleChangeEmail}
@@ -72,7 +100,7 @@ export const SignUpForm = () => {
         <br />
         <input
           type="password"
-          placeholder="enter password"
+          placeholder="verify password"
           name="password2"
           value={password2}
           onChange={handleChangePassword2}

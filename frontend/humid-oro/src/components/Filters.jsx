@@ -20,10 +20,19 @@ const Filter = styled.div`
   select {
     margin-left: 20px;
   }
+`;
+const Categories = styled.div`
   h1 {
     margin: 1rem;
     text-align: center;
   }
+  background-color: #d3bfa8;
+  color: sienna;
+  margin-left: 15px;
+  max-height: 80vh;
+`;
+const Category = styled.div`
+  /* display: flex; */
 `;
 export const Filters = ({
   strengthChange,
@@ -48,40 +57,42 @@ export const Filters = ({
   // console.log(uniqueOrigins);
   return (
     <>
-      <Filter>
+      <Categories>
         <h1>Filters</h1>
-        <h3>Country of Origin</h3>
-        <select onChange={originChange}>
-          <option value={"Origin"}>Country Of Origin</option>
-          {uniqueOrigins?.map((origin) => {
-            return (
-              <option key={origin} value={origin}>
-                {origin}
-              </option>
-            );
-          })}
-        </select>
-        <h3>Strength</h3>
-        <select onChange={strengthChange}>
-          <option value={"Strength"}>Strength</option>
-          <option value={"Mild"}>Mild</option>
-          <option value={"Mild-Medium"}>Mild-Medium</option>
-          <option value={"Medium"}>Medium</option>
-          <option value={"Medium-Full"}>Medium-Full</option>
-          <option value={"Full"}>Full</option>
-        </select>
-        <h3>Brand</h3>
-        <select onChange={brandChange}>
-          <option value={"Brand"}>Brand</option>
-          {uniqueBrands?.map((brand) => {
-            return (
-              <option key={brand} value={brand}>
-                {brand}
-              </option>
-            );
-          })}
-        </select>
-      </Filter>
+        <Filter>
+          <h3>Country of Origin</h3>
+          <select onChange={originChange}>
+            <option value={"Origin"}>Country Of Origin</option>
+            {uniqueOrigins?.map((origin) => {
+              return (
+                <option key={origin} value={origin}>
+                  {origin}
+                </option>
+              );
+            })}
+          </select>
+          <h3>Strength</h3>
+          <select onChange={strengthChange}>
+            <option value={"Strength"}>Strength</option>
+            <option value={"Mild"}>Mild</option>
+            <option value={"Mild-Medium"}>Mild-Medium</option>
+            <option value={"Medium"}>Medium</option>
+            <option value={"Medium-Full"}>Medium-Full</option>
+            <option value={"Full"}>Full</option>
+          </select>
+          <h3>Brand</h3>
+          <select onChange={brandChange}>
+            <option value={"Brand"}>Brand</option>
+            {uniqueBrands?.map((brand) => {
+              return (
+                <option key={brand} value={brand}>
+                  {brand}
+                </option>
+              );
+            })}
+          </select>
+        </Filter>
+      </Categories>
     </>
   );
 };

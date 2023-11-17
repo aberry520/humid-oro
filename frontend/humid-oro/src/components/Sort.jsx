@@ -9,6 +9,7 @@ const Filter = styled.div`
   /* justify-content: center; */
   /* flex-direction: column; */
   /* align-items: center; */
+
   text-align: center;
   max-width: 20vw;
   min-width: fit-content;
@@ -46,12 +47,17 @@ const Categories = styled.div`
   .sort {
     font-size: 1.25em;
   }
+  background-color: #d3bfa8;
+  margin-left: 15px;
+  max-height: 80vh;
 `;
 const Category = styled.div`
   /* display: flex; */
 `;
 const Buttons = styled.div`
-  /* display: flex; */
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 `;
 export const Sort = ({
   ascendingOrigin,
@@ -70,49 +76,36 @@ export const Sort = ({
             <h3>Country of Origin</h3>
             <Buttons>
               <button onClick={ascendingOrigin} value={"origin"}>
-                Ascending
+                <img src="../public/ascend.svg" />
               </button>
               <button onClick={descendingOrigin} value={"-origin"}>
-                Descending
+                <img src="../public/descend.svg" />
               </button>
             </Buttons>
           </Category>
-          {/* <select onChange={originChange}>
-          <option value={"Origin"}>Country Of Origin</option>
-          <option value={"Origin"}>Country Of Origin</option>
-        </select> */}
+
           <Category>
             <h3>Strength</h3>
             <Buttons>
               <button onClick={ascendingStrength} value={"strength"}>
-                Ascending
+                <img src="../public/ascend.svg" />
               </button>
               <button onClick={descendingStrength} value={"-strength"}>
-                Descending
+                <img src="../public/descend.svg" />
               </button>
             </Buttons>
-            {/* <select onChange={strengthChange}>
-          <option value={"Strength"}>Strength</option>
-          <option value={"Mild"}>Mild</option>
-          <option value={"Mild-Medium"}>Mild-Medium</option>
-          <option value={"Medium"}>Medium</option>
-          <option value={"Medium-Full"}>Medium-Full</option>
-          <option value={"Full"}>Full</option>
-        </select> */}
           </Category>
+
           <Category>
             <h3>Brand</h3>
             <Buttons>
               <button onClick={ascendingBrand} value={"brand"}>
-                Ascending
+                <img src="../public/ascend.svg" />
               </button>
               <button onClick={descendingBrand} value={"-brand"}>
-                Descending
+                <img src="../public/descend.svg" />
               </button>
             </Buttons>
-            {/* <select onChange={brandChange}>
-          <option value={"Brand"}>Brand</option>
-        </select> */}
           </Category>
         </Filter>
       </Categories>

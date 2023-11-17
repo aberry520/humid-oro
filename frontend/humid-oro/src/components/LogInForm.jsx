@@ -1,6 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import styled from "styled-components";
+
+const Login = styled.div`
+  form {
+    text-align: center;
+  }
+  display: flex;
+  flex-direction: column;
+`;
 
 export const LogInForm = () => {
   const [username, setUsername] = useState("");
@@ -33,7 +42,7 @@ export const LogInForm = () => {
     console.log(data);
     if (data?.key) {
       Cookies.set("Authorization", `Token ${data?.key}`);
-      navigate("/user");
+      navigate("/");
     }
     if (data?.password) {
       setErrorMessage(data?.password[0]);
@@ -49,30 +58,32 @@ export const LogInForm = () => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <h2>Log In Here</h2>
-        <input
-          type="text"
-          placeholder="enter username"
-          name="username"
-          value={username}
-          onChange={handleChangeUsername}
-        />
-        <br />
-        <input
-          type="password"
-          placeholder="enter password"
-          name="password"
-          value={password}
-          onChange={handleChangePassword}
-        />
-        <br />
-        <button type="submit">LogIn</button>
-      </form>
-      <button type="button" onClick={handleClick}>
-        Create Account
-      </button>
-      {error && <p>{errorMessage}</p>}
+      <Login>
+        <form onSubmit={handleSubmit}>
+          <h2>Log In</h2>
+          <input
+            type="text"
+            placeholder="enter username"
+            name="username"
+            value={username}
+            onChange={handleChangeUsername}
+          />
+          <br />
+          <input
+            type="password"
+            placeholder="enter password"
+            name="password"
+            value={password}
+            onChange={handleChangePassword}
+          />
+          <br />
+          <button type="submit">LogIn</button>
+        </form>
+        <button type="button" onClick={handleClick}>
+          Create Account
+        </button>
+        {error && <p>{errorMessage}</p>}
+      </Login>
     </>
   );
 };

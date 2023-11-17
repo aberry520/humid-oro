@@ -4,8 +4,20 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Review = styled.div`
-  /* display: flex;
-  flex-direction: column; */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    input {
+      max-width: fit-content;
+      background-color: antiquewhite;
+    }
+    textarea {
+      background-color: antiquewhite;
+      color: black;
+    }
+  }
 `;
 
 export const ReviewForm = ({ cigarInfo }) => {
@@ -62,7 +74,7 @@ export const ReviewForm = ({ cigarInfo }) => {
             name="review"
             placeholder="Description"
             rows="10"
-            cols="50"
+            cols="40"
             required
             onChange={handleChangeReview}
           />
@@ -73,19 +85,16 @@ export const ReviewForm = ({ cigarInfo }) => {
             required
             onChange={handleChangeTime}
           />
-          <label htmlFor="Rating">
-            Rating: 0
-            <input
-              type="decimal"
-              name="rating"
-              min={0}
-              max={10}
-              step={0.5}
-              required
-              onChange={handleChangeRating}
-            />
-            10
-          </label>
+
+          <input
+            type="decimal"
+            name="rating"
+            placeholder="Rating out of 10"
+            min={0}
+            max={10}
+            required
+            onChange={handleChangeRating}
+          />
           <button type="submit">Review</button>
         </form>
       </Review>

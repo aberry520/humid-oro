@@ -3,18 +3,18 @@ import styled from "styled-components";
 const Card = styled.div`
   /* border: solid #bf976d; */
   margin: 0;
-  min-height: 300px;
-  max-height: fit-content;
+  min-height: 500px;
+  /* max-height: fit-content; */
   max-width: 200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* padding: 10px; */
+  padding: 8px;
   /* flex-direction: column; */
-  /* background-color: #364f59; */
+  background-color: #ffffff;
   /* box-shadow: 1px 29px 81px 0px rgba(0, 0, 0, 0.75); */
   img {
-    margin-top: 15px;
+    /* margin-top: 15px; */
     width: 200px;
     height: 300px;
     object-fit: contain;
@@ -26,6 +26,7 @@ const Card = styled.div`
   h3 {
     font-size: small;
     margin: 0;
+    min-width: 200px;
   }
 `;
 

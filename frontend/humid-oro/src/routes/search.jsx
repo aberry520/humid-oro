@@ -8,8 +8,16 @@ import { useState } from "react";
 const HomeDiv = styled.div`
   margin: 10px auto;
   display: grid;
-  grid-template-columns: 1fr 4fr;
-  max-width: 90vw;
+  grid-template-columns: 1fr 4fr 1fr;
+  max-width: fit-content;
+  .gif {
+    width: 500px;
+    height: auto;
+  }
+  @media screen and (max-width: 1000px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export default function Search({}) {

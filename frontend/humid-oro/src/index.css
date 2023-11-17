@@ -5,6 +5,7 @@
   overflow-x: hidden;
   color-scheme: light dark;
   color: #c1976e;
+  color: sienna;
   /* background-color: #242424; */
 
   font-synthesis: none;
@@ -42,7 +43,7 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid black;
   padding: 0.6em 1.2em;
   font-size: 0.95em;
   font-weight: 500;
@@ -51,16 +52,29 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
   box-shadow: 2px 3px 1px rgb(27, 27, 27);
+  transition: all 0.2s ease-in-out;
 }
 button:hover {
   border-color: #997450;
   background-color: rgb(128, 78, 40);
+  transform: scale(1.05);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto black;
 }
-
+input {
+  background-color: antiquewhite;
+  color: black;
+  border: solid rgba(0, 0, 0, 0.433);
+  box-shadow: 2px 3px 10px rgba(27, 27, 27, 0.571);
+}
+select {
+  background-color: antiquewhite;
+  color: black;
+  border: solid rgba(0, 0, 0, 0.433);
+  box-shadow: 2px 3px 10px rgba(27, 27, 27, 0.571);
+}
 /* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
