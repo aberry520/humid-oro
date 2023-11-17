@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
-import Cookies from "js-cookie";
 
 import { useEffect, useState } from "react";
 
@@ -80,7 +79,6 @@ export default function UserAdd() {
         color,
       };
       console.log(JSON.stringify(user));
-      console.log(Cookies.get("csrftoken"));
       const url = "http://127.0.0.1:8001/addcigar/";
       const data = await fetch(url, {
         method: "POST",
