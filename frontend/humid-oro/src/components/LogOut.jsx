@@ -1,5 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import styled from "styled-components";
+const Logout = styled.div`
+  form {
+    box-shadow: none;
+  }
+`;
 export const LogOut = () => {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -19,9 +25,11 @@ export const LogOut = () => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Log Out</button>
-      </form>
+      <Logout>
+        <form onSubmit={handleSubmit}>
+          <button type="submit">Log Out</button>
+        </form>
+      </Logout>
     </>
   );
 };

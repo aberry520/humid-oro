@@ -6,9 +6,13 @@ import styled from "styled-components";
 const Login = styled.div`
   form {
     text-align: center;
+    box-shadow: none;
   }
   display: flex;
   flex-direction: column;
+  background-color: #d3bfa8;
+  padding: 10px;
+  box-shadow: 2px 3px 10px rgba(27, 27, 27, 0.571);
 `;
 
 export const LogInForm = () => {
