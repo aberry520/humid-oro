@@ -28,6 +28,8 @@ With Humid-oro you are able to rate and review cigars that you have previously e
   - Wrapper
   - Filler
   - Binder
+  - Avg Time Smoked
+  - Avg Rating
 
 ### Relationships
 
