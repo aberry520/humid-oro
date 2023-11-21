@@ -25,8 +25,8 @@ export const Footer = () => {
     <>
       <NavBorder>
         <Nav>
-          <img className="logo" src="../public/humidoro.svg" />
-          <img className="footer" src="../public/footer.svg" />
+          <img className="logo" src="/humidoro.svg" />
+          <img className="footer" src="/footer.svg" />
         </Nav>
       </NavBorder>
     </>

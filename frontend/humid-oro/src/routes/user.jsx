@@ -109,7 +109,7 @@ export default function User() {
         </Profile>
         {loading ? (
           <Loading>
-            <img src="../../public/ezgif.com-crop.gif" className="gif" />
+            <img src="/ezgif.com-crop.gif" className="gif" />
             <h3>Loading Your Reviews...</h3>
           </Loading>
         ) : (

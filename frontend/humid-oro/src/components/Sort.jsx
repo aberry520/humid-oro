@@ -65,10 +65,10 @@ export const Sort = ({
             <h3>Country of Origin</h3>
             <Buttons>
               <button onClick={ascendingOrigin} value={"origin"}>
-                <img src="../public/ascend.svg" />
+                <img src="/ascend.svg" />
               </button>
               <button onClick={descendingOrigin} value={"-origin"}>
-                <img src="../public/descend.svg" />
+                <img src="/descend.svg" />
               </button>
             </Buttons>
           </Category>
@@ -77,10 +77,10 @@ export const Sort = ({
             <h3>Strength</h3>
             <Buttons>
               <button onClick={ascendingStrength} value={"strength"}>
-                <img src="../public/ascend.svg" />
+                <img src="/ascend.svg" />
               </button>
               <button onClick={descendingStrength} value={"-strength"}>
-                <img src="../public/descend.svg" />
+                <img src="/descend.svg" />
               </button>
             </Buttons>
           </Category>
@@ -89,10 +89,10 @@ export const Sort = ({
             <h3>Brand</h3>
             <Buttons>
               <button onClick={ascendingBrand} value={"brand"}>
-                <img src="../public/ascend.svg" />
+                <img src="/ascend.svg" />
               </button>
               <button onClick={descendingBrand} value={"-brand"}>
-                <img src="../public/descend.svg" />
+                <img src="/descend.svg" />
               </button>
             </Buttons>
           </Category>

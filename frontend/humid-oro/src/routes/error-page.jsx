@@ -13,7 +13,7 @@ export default function ErrorPage() {
     <>
       <NavBar />
       <Error>
-        <img src="../../public/error.svg" />
+        <img src="/error.svg" />
         <form>
           <textarea
             name="error"

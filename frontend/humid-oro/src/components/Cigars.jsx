@@ -103,7 +103,7 @@ export const Cigars = ({
       <Cigar>
         {loading == true ? (
           <Loading>
-            <img src="../../public/ezgif.com-crop.gif" className="gif" />
+            <img src="/ezgif.com-crop.gif" className="gif" />
             <h3>Loading Cigars...</h3>
           </Loading>
         ) : (
@@ -118,7 +118,7 @@ export const Cigars = ({
             {items?.length <= 0 ? (
               <Results>
                 <Link to={"/add/"}>
-                  <img className="results" src="../../public/burn.svg" />
+                  <img className="results" src="/burn.svg" />
                 </Link>
               </Results>
             ) : (
