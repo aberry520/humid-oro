@@ -34,7 +34,7 @@ export const NavBar = () => {
       <NavBorder>
         <Nav>
           <Link to={"/"}>
-            <img src="/../public/humidoro.svg" title="Home" />
+            <img src="/public/humidoro.svg" title="Home" />
           </Link>
           <Features>
             <Link to={"/"}>
