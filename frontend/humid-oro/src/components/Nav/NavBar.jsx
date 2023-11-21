@@ -34,26 +34,18 @@ export const NavBar = () => {
       <NavBorder>
         <Nav>
           <Link to={"/"}>
-            <img src="./public/humidoro.svg" title="Home" />
+            <img src="/humidoro.svg" title="Home" />
           </Link>
           <Features>
             <Link to={"/"}>
-              <img className="add" src="/../public/home.svg" title="Home" />
+              <img className="add" src="/home.svg" title="Home" />
             </Link>
             <Search />
             <Link to={"user/"}>
-              <img
-                className="add"
-                src="/../public/user.svg"
-                title="User Profile"
-              />
+              <img className="add" src="/user.svg" title="User Profile" />
             </Link>
             <Link to={"add/"}>
-              <img
-                className="add"
-                src="/../public/add.svg"
-                title="Add New Cigar"
-              />
+              <img className="add" src="/add.svg" title="Add New Cigar" />
             </Link>
           </Features>
         </Nav>
