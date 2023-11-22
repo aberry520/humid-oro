@@ -79,7 +79,7 @@ export default function UserAdd() {
         color,
       };
       console.log(JSON.stringify(user));
-      const url = "http://127.0.0.1:8001/addcigar/";
+      const url = "https://humid-oro.onrender.com/addcigar/";
       const data = await fetch(url, {
         method: "POST",
         headers: {
@@ -109,7 +109,7 @@ export default function UserAdd() {
         color,
       };
       console.log(JSON.stringify(user));
-      const url = "http://127.0.0.1:8001/cigar/";
+      const url = "https://humid-oro.onrender.com/cigar/";
       const data = await fetch(url, {
         method: "POST",
         headers: {
@@ -126,7 +126,7 @@ export default function UserAdd() {
     }
   };
   async function getBrand() {
-    const url = `http://127.0.0.1:8001/brand/`;
+    const url = `https://humid-oro.onrender.com/brand/`;
     try {
       const response = await fetch(url);
       const result = await response.json();

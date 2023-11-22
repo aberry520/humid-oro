@@ -32,7 +32,7 @@ export default function CigarInfo() {
   const params = useParams();
   const [cigarInfo, setCigarInfo] = useState();
   async function getInfo() {
-    const url = `http://127.0.0.1:8001/cigar/${params.id}`;
+    const url = `https://humid-oro.onrender.com/cigar/${params.id}`;
     try {
       const response = await fetch(url);
       const result = await response.json();

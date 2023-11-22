@@ -50,7 +50,7 @@ const Loading = styled.div`
 export async function loader() {
   console.log(Cookies.get());
   try {
-    const url = `http://127.0.0.1:8001/dj-rest-auth/user/`;
+    const url = `https://humid-oro.onrender.com/dj-rest-auth/user/`;
     const userdata = await fetch(url, {
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ export default function User() {
     getList();
   }, []);
   async function getList() {
-    const urlList = `http://127.0.0.1:8001/reviewsuserlist/?ordering=-rating`;
+    const urlList = `https://humid-oro.onrender.com/reviewsuserlist/?ordering=-rating`;
     const userList = await fetch(urlList, {
       headers: {
         "Content-Type": "application/json",

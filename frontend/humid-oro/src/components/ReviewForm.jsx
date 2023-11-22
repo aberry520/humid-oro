@@ -46,7 +46,7 @@ export const ReviewForm = ({ cigarInfo }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://127.0.0.1:8001/reviewsadd/";
+      const url = "https://humid-oro.onrender.com/reviewsadd/";
       const data = await fetch(url, {
         method: "POST",
         headers: {

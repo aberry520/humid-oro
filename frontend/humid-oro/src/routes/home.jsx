@@ -29,7 +29,7 @@ export default function Home() {
   const [error, setError] = useState(null);
   async function getCigars() {
     try {
-      const url = `http://127.0.0.1:8001/cigar/`;
+      const url = `https://humid-oro.onrender.com/cigar/`;
       const response = await fetch(url);
       if (response.ok) {
         const result = await response.json();
@@ -60,7 +60,7 @@ export default function Home() {
   const prev = next - 1;
   async function getCigarsSort(page) {
     try {
-      const url = `http://127.0.0.1:8001/cigar/?ordering=${sort}&page=${page}`;
+      const url = `https://humid-oro.onrender.com/cigar/?ordering=${sort}&page=${page}`;
       const response = await fetch(url);
       if (response.ok) {
         const result = await response.json();

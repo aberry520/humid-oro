@@ -34,7 +34,7 @@ export const LogInForm = () => {
       username,
       password,
     };
-    const url = "http://127.0.0.1:8001/dj-rest-auth/login/";
+    const url = "https://humid-oro.onrender.com/dj-rest-auth/login/";
     const data = await fetch(url, {
       method: "POST",
       headers: {

@@ -28,7 +28,7 @@ export default function Search({}) {
   const [strength, setStrength] = useState();
   const [brand, setBrand] = useState();
   async function getSearch() {
-    const url = `http://127.0.0.1:8001/cigar/?search=${params.search}`;
+    const url = `https://humid-oro.onrender.com/cigar/?search=${params.search}`;
     try {
       const response = await fetch(url);
       const result = await response.json();

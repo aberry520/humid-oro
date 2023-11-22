@@ -51,7 +51,7 @@ export const UserReviewItem = ({ review }) => {
     setDeleteCheck(false);
   };
   const handleYes = async (e) => {
-    const url = `http://127.0.0.1:8001/reviewsuserlist/${review.id}`;
+    const url = `https://humid-oro.onrender.com/reviewsuserlist/${review.id}`;
     await fetch(url, {
       method: "DELETE",
       headers: {

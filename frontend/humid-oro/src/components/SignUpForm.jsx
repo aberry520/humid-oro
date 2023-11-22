@@ -39,7 +39,7 @@ export const SignUpForm = () => {
       password2,
     };
     console.log(JSON.stringify(user));
-    const url = "http://127.0.0.1:8001/dj-rest-auth/registration/";
+    const url = "https://humid-oro.onrender.com/dj-rest-auth/registration/";
     const data = await fetch(url, {
       method: "POST",
       headers: {

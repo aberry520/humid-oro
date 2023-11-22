@@ -10,7 +10,7 @@ export const LogOut = () => {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://127.0.0.1:8001/dj-rest-auth/logout/";
+    const url = "https://humid-oro.onrender.com/dj-rest-auth/logout/";
     const data = await fetch(url, {
       method: "POST",
       headers: {
