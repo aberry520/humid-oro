@@ -10,6 +10,11 @@ const Nav = styled.div`
   justify-content: space-around;
   align-items: center;
   margin: auto;
+  @media screen and (max-width: 600px) {
+    .logo {
+      max-width: 100vw;
+    }
+  }
 `;
 const Features = styled.div`
   .add {
@@ -23,6 +28,11 @@ const Features = styled.div`
   align-items: center;
   width: -webkit-fill-available;
   justify-content: space-evenly;
+  @media screen and (max-width: 600px) {
+    .add {
+      max-height: 40px;
+    }
+  }
 `;
 const NavBorder = styled.div`
   margin: 0;
@@ -34,7 +44,7 @@ export const NavBar = () => {
       <NavBorder>
         <Nav>
           <Link to={"/"}>
-            <img src="/humidoro.svg" title="Home" />
+            <img className="logo" src="/humidoro.svg" title="Home" />
           </Link>
           <Features>
             <Link to={"/"}>

@@ -12,7 +12,7 @@ const HomeDiv = styled.div`
     width: 500px;
     height: auto;
   }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 600px) {
     display: flex;
     flex-direction: column;
   }

@@ -10,9 +10,18 @@ const Nav = styled.div`
     opacity: 40%;
     position: absolute;
     z-index: -1;
+    /* width: 200px;
+    height: 300px; */
+    /* object-fit: contain;
+    overflow-x: hidden; */
   }
   .logo {
     margin-top: 50px;
+  }
+  @media screen and (max-width: 600px) {
+    .logo {
+      max-width: 100vw;
+    }
   }
 `;
 const NavBorder = styled.div`
