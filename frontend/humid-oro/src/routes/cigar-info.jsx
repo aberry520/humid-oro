@@ -25,6 +25,7 @@ const InfoDiv = styled.div`
     object-fit: contain;
   }
   @media screen and (max-width: 600px) {
+    padding: 0;
     h1 {
       font-size: xx-large;
     }
