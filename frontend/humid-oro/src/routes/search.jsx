@@ -176,12 +176,13 @@ export default function Search({}) {
   return (
     <>
       <HomeDiv>
-        <Filters
+        {/* <Filters
           strengthChange={strengthChange}
           originChange={originChange}
           brandChange={brandChange}
           cigarsSearch={cigarsSearch}
-        />
+        /> */}
+        <img />
         <Cigars cigarsSearch={cigarsSearch} cigarFilter={cigarFilter} />
       </HomeDiv>
     </>

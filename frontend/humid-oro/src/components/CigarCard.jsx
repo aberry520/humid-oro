@@ -26,6 +26,28 @@ const Card = styled.div`
     margin: 0;
     min-width: 200px;
   }
+  @media screen and (max-width: 600px) {
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
+    max-width: 80px;
+    min-height: 200px;
+    max-height: 200px;
+    /* align-content: center; */
+    h2 {
+      font-size: 9px;
+      margin: 0;
+    }
+    h3 {
+      font-size: 7px;
+      margin: 0;
+      min-width: 80px;
+    }
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
 `;
 
 export const CigarCard = ({ cigars }) => {

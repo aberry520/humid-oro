@@ -119,7 +119,7 @@ export default function Home() {
   return (
     <>
       <HomeDiv>
-        <Sort
+        {/* <Sort
           ascendingOrigin={ascendingOrigin}
           descendingOrigin={descendingOrigin}
           ascendingStrength={ascendingStrength}
@@ -127,7 +127,8 @@ export default function Home() {
           ascendingBrand={ascendingBrand}
           descendingBrand={descendingBrand}
           setLoading={setLoading}
-        />
+        /> */}
+        <img />
         <Cigars
           cigarsHome={cigarsHome}
           cigarFilter={cigarFilter}
