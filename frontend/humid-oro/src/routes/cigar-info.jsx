@@ -24,6 +24,22 @@ const InfoDiv = styled.div`
     margin: 10px;
     object-fit: contain;
   }
+  @media screen and (max-width: 600px) {
+    h1 {
+      font-size: xx-large;
+    }
+    h3 {
+      font-size: small;
+      max-width: 20ch;
+      line-height: 1.4;
+    }
+    img {
+      width: 150px;
+      height: 150px;
+      margin: 5px;
+      object-fit: contain;
+    }
+  }
 `;
 const Info = styled.div`
   display: flex;

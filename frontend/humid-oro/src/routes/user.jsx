@@ -9,6 +9,11 @@ const UserPage = styled.div`
   margin: 25px 0px;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
+  @media screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const Profile = styled.div`
   min-height: 80vh;
@@ -18,6 +23,22 @@ const Profile = styled.div`
   flex-direction: column;
   margin: 0 20px;
   width: fit-content;
+  @media screen and (max-width: 600px) {
+    min-height: fit-content;
+    flex-direction: row;
+    width: 100vw;
+    gap: 5px;
+    h1 {
+      /* font-size: x-large; */
+      display: none;
+    }
+    h4 {
+      text-align: center;
+    }
+    p {
+      max-width: 15ch;
+    }
+  }
 
   padding: 15px;
   img {
